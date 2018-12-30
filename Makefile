@@ -15,10 +15,10 @@ FLAGS = -Wall -Wextra #-Werror
 SRC_DIR = src/
 SRC_FIL = $(shell ls src | grep -E "ft_.+\.c")
 SRCS = $(addprefix  $(SRC_DIR), $(SRC_FIL))
-INCLUDE =-Isrc -Isrc/libft
+INCLUDE =-Isrc -Isrc/libftr
 COMMAND = gcc
-LIBFT_DIR = src/libft/
-LIBFT_FIL = $(shell ls src/libft | grep -E "ft_.+\.c")
+LIBFT_DIR = src/libftr/
+LIBFT_FIL = $(shell ls src/libftr | grep -E "ft_.+\.c")
 LIBFT_SRCS = $(addprefix  $(LIBFT_DIR), $(LIBFT_FIL))
 LIBFT_OBJ	= $(LIBFT_SRCS:.c=.o)
 OBJ	= $(SRCS:.c=.o) $(LIBFT_SRCS:.c=.o)

@@ -1,4 +1,0 @@
-gcc -Isrc -Isrc/libft -g -c -o main.o main.c
-gcc -Isrc -Isrc/libft -g -o test main.o libftprintf.a
-gcc -Isrc -Isrc/libft -g -c -o main.o main.c
-gcc -Isrc -Isrc/libft -g -o test main.o libftprintf.a
