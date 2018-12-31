@@ -1,5 +1,6 @@
 
 #include "rgyles.h"
+#include <stdio.h>
 #include "libft.h"
 
 char	*ft_dtoa(double n)
@@ -15,9 +16,11 @@ char	*ft_dtoa(double n)
 	i = 0;
 	while (n >= 1)
 		n -= 1;
+//	printf("n0 - %f\n", n);
 	while (++i < 7)
 	{
-		n *= 10.0;
+		n *= 10.0 + 1e-9;
+//		printf("n1 - %f\n", n);
 		dop[i] = (int)n + '0';
 		while (n >= 1)
 			n -= 1;
