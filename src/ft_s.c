@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 17:42:11 by rgyles            #+#    #+#             */
-/*   Updated: 2018/12/31 16:39:55 by rgyles           ###   ########.fr       */
+/*   Updated: 2018/12/31 19:18:35 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,19 @@ int		ft_s(t_spec *elem, va_list ap)
 		ft_putstr("(null)");
 		return (6);
 	}
-	size = ft_strlen(str);
-	while (size < elem->width && !elem->flag.minus)
+	if (elem->precision != -1)
+	{
+		str = ft_strsub(str, 0, elem->precision);
+		size = ft_strlen(str);
+		size = ft_output(elem, str, size);
+		free(str);
+	}
+	else
+	{
+		size = ft_strlen(str);
+		size = ft_output(elem, str, size);
+	}
+	/*while (size < elem->width && !elem->flag.minus)
 	{
 		size++;
 		ft_putchar(' ');
@@ -48,6 +59,6 @@ int		ft_s(t_spec *elem, va_list ap)
 	{
 		size++;
 		ft_putchar(' ');
-	}
+	}*/
 	return (size);
 }

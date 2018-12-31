@@ -33,6 +33,23 @@ char	*ft_dtoa(double n)
 	return (res);
 }
 
+/*static int		ft_output(t_spec *elem, char *str, int size)
+{
+	printf("size - %d\n", size);
+	while (size < elem->width && !elem->flag.minus)
+	{
+		size++;
+		ft_putchar(' ');
+	}
+	ft_putstr(str);
+	while (size < elem->width && elem->flag.minus)
+	{
+		size++;
+		ft_putchar(' ');
+	}
+	return (size);
+}*/
+
 int		ft_f(t_spec *elem, va_list ap)
 {
 	char	*str;
@@ -40,7 +57,7 @@ int		ft_f(t_spec *elem, va_list ap)
 
 	str = ft_dtoa(va_arg(ap, double));
 	size = ft_strlen(str);
-	ft_putstr(str);
+	size = ft_output(elem, str, size);
 	free(str);
 	return (size);
 }
