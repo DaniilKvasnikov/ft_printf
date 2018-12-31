@@ -1,6 +1,5 @@
 
 #include "rgyles.h"
-#include <stdio.h>
 #include "libft.h"
 
 char	*ft_dtoa(double n)
@@ -14,13 +13,13 @@ char	*ft_dtoa(double n)
 	dop = ft_strnew(7);
 	dop[0] = '.';
 	i = 0;
-	while (n > 1)
+	while (n >= 1)
 		n -= 1;
 	while (++i < 7)
 	{
 		n *= 10.0;
-		dop[i] = (n / 1) + '0';
-		while (n > 1)
+		dop[i] = (int)n + '0';
+		while (n >= 1)
 			n -= 1;
 	}
 	res = ft_strnew(ft_strlen(str) + ft_strlen(dop));
