@@ -11,6 +11,8 @@ char	*ft_dtoa(double n)
 	int i;
 
 	str = ft_itoa(n / 1);
+	if (n < 0)
+		n *= -1;
 	dop = ft_strnew(7);
 	dop[0] = '.';
 	i = 0;
@@ -32,23 +34,6 @@ char	*ft_dtoa(double n)
 	free(dop);
 	return (res);
 }
-
-/*static int		ft_output(t_spec *elem, char *str, int size)
-{
-	printf("size - %d\n", size);
-	while (size < elem->width && !elem->flag.minus)
-	{
-		size++;
-		ft_putchar(' ');
-	}
-	ft_putstr(str);
-	while (size < elem->width && elem->flag.minus)
-	{
-		size++;
-		ft_putchar(' ');
-	}
-	return (size);
-}*/
 
 int		ft_f(t_spec *elem, va_list ap)
 {
