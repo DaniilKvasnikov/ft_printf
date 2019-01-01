@@ -1,6 +1,7 @@
 
 #include "rgyles.h"
 #include <stdio.h>
+#include <stdint.h>
 
 static char	*get_minus(char *str)
 {

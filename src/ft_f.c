@@ -11,6 +11,8 @@ char	*ft_dtoa(double n)
 	int i;
 
 	str = ft_itoa(n / 1);
+	if (n < 0)
+		n *= -1;
 	dop = ft_strnew(7);
 	dop[0] = '.';
 	i = 0;
