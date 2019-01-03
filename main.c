@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 22:40:57 by rrhaenys          #+#    #+#             */
-/*   Updated: 2018/12/27 19:16:16 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2018/12/31 15:18:12 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,13 @@
 
 int	main(int argc, char const *argv[])
 {
-	ft_printf("%5%\n");
-	ft_printf("%-5%\n");
+	double d;
+
+	d = 100.1;
+//	ft_printf("%5%\n");
+//	ft_printf("%-5%\n");
+//	ft_printf("%f\n", 100.1);
+	//ft_printf("%f\n", 100.0);
+	ft_printf("%f\n", 100.192);
 	return 0;
 }

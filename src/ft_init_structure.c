@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 16:30:43 by rrhaenys          #+#    #+#             */
-/*   Updated: 2018/12/27 18:44:42 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2018/12/31 16:30:59 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,10 @@ char	*get_precision(t_spec *elem, char *str)
 	index = 1;
 	sum = 0;
 	if (str[index - 1] != '.')
+	{
+		elem->precision = -1;
 		return (str);
+	}
 	while ((num = is_num(str[index])) >= 0)
 	{
 		sum = sum * 10 + num;
@@ -161,6 +164,6 @@ int		ft_init_structure(t_spec *elem, char *str)
 	str = get_precision(elem, str);
 	str = get_length(elem, str);
 	str = get_character(elem, str);
-//	print_structure(elem);
+	print_structure(elem);
 	return (str - start);
 }

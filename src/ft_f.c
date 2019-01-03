@@ -16,13 +16,15 @@ char	*ft_dtoa(double n)
 	dop = ft_strnew(7);
 	dop[0] = '.';
 	i = 0;
-	while (n > 1)
+	while (n >= 1)
 		n -= 1;
+//	printf("n0 - %f\n", n);
 	while (++i < 7)
 	{
-		n *= 10.0;
-		dop[i] = (n / 1) + '0';
-		while (n > 1)
+		n *= 10.0 + 1e-9;
+//		printf("n1 - %f\n", n);
+		dop[i] = (int)n + '0';
+		while (n >= 1)
 			n -= 1;
 	}
 	res = ft_strnew(ft_strlen(str) + ft_strlen(dop));
@@ -40,7 +42,7 @@ int		ft_f(t_spec *elem, va_list ap)
 
 	str = ft_dtoa(va_arg(ap, double));
 	size = ft_strlen(str);
-	ft_putstr(str);
+	size = ft_output(elem, str, size);
 	free(str);
 	return (size);
 }
