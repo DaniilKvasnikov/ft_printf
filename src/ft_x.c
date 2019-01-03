@@ -3,6 +3,26 @@
 #include <stdio.h>
 #include <stdint.h>
 
+static char	*addone(char *str)
+{
+	int index;
+
+	index = -1;
+	while (str[++index] != '\0')
+		;
+	str[--index]++;
+	while (index > 0)
+	{
+		if (str[index] == 'g')
+		{
+			str[index] = 0;
+			str[index - 1]++;
+		}
+		index--;
+	}
+	return (str);
+}
+
 static char	*get_minus(char *str)
 {
 	char	*temp = "0123456789abcdef0";
@@ -13,7 +33,8 @@ static char	*get_minus(char *str)
 
 	res =ft_strnew(8);
 	index = -1;
-	while (++index < (8 - ft_strlen(str)))
+	int size = (8 - ft_strlen(str));
+	while (++index < size)
 		res[index] = 'f';
 	j = 0;
 	while (index < 8)
@@ -25,10 +46,10 @@ static char	*get_minus(char *str)
 			c = c - 'A' + 10;
 		else if (c >= 'a' && c <= 'z')
 			c = c - 'a' + 10;
-		c = 15 - c;
-		c = temp[c];
-		res[index++] = c + (index == 7);
+		c = temp[15 - c];
+		res[index++] = c;
 	}
+	addone(res);
 	free(str);
 	return (res);
 }
@@ -43,14 +64,14 @@ int			ft_x(t_spec *elem, va_list ap)
 	num = (long long int)va_arg(ap, long long int);
 	if (elem->length.l == 1)
 		num = (long int)num;
-	else if (elem->length.l == 0)
-		num = (int)num;
 	else if (elem->length.h == 1)
 		num = (short int)num;
 	else if (elem->length.h == 2)
 		num = (unsigned int)num;
 	else if (elem->length.j >= 1)
 		num = (intmax_t)num;
+	else if (elem->length.l == 0)
+		num = (int)num;
 	znak = 1;
 	if (num < 0)
 	{
