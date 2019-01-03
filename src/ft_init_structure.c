@@ -164,6 +164,6 @@ int		ft_init_structure(t_spec *elem, char *str)
 	str = get_precision(elem, str);
 	str = get_length(elem, str);
 	str = get_character(elem, str);
-	print_structure(elem);
+//	print_structure(elem);
 	return (str - start);
 }
