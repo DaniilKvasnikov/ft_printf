@@ -4,13 +4,21 @@
 
 int		ft_p(t_spec *elem, va_list ap)
 {
-	char *par;
+	int		size;
+	char	*ans;
+	char	*p;
 
-	if ((par = ft_rebase((long long)va_arg(ap, void*), 16)) == NULL)
+	if ((p = ft_rebase((long long)va_arg(ap, void*), 16)) == NULL)
 		return (-1);
-	ft_putstr("0x");
-	ft_putstr(par);
-	free(par);
-	return (0);
-	ap = 0;
+	if ((ans = ft_strjoin("0x", p)) == NULL)
+	{
+		free(p);
+		return (-1);
+	}
+	size = ft_output(elem, ans, 0); 
+	ft_bzero(p, ft_strlen(p));
+	ft_bzero(ans, ft_strlen(ans));
+	free(p);
+	free(ans);
+	return (size);
 }
