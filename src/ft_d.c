@@ -89,7 +89,12 @@ int		ft_d(t_spec *elem, va_list ap)
 	while (size < elem->width && !elem->flag.minus)
 	{
 		size++;
-		ft_putchar(' ');
+		if (elem->flag.zerro == 0)
+			ft_putchar(' ');
+		else if (elem->precision >= 0)
+			ft_putchar(' ');
+		else
+			ft_putchar('0');
 	}
 	ft_putstr(str);
 	while (size < elem->width)
