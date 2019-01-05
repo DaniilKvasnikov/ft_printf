@@ -4,6 +4,8 @@
 
 int		ft_percent(t_spec *elem, va_list ap)
 {
-	ft_putstr("%");
-	return (1);
+	int	size;
+	(void)ap;
+	size = ft_output(elem, "%", 1);
+	return (size);
 }
