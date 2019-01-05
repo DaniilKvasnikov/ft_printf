@@ -12,6 +12,7 @@
 
 #include "rgyles.h"
 #include <stdio.h>
+#include <stdint.h>
 
 static char	*get_null(char *str, int size)
 {
@@ -54,11 +55,26 @@ int		ft_d(t_spec *elem, va_list ap)
 	int znak;
 
 	znak = 1;
-	if ((n = va_arg(ap, int)) < 0)
+	if (elem->length.h == 1)
+		n = (short)va_arg(ap, int);
+	else if (elem->length.h == 2)
+		n = (char)va_arg(ap, int);
+	else if (elem->length.l == 1)
+		n = (long int)va_arg(ap, long int);
+	else if (elem->length.l == 2)
+		n = (long long)va_arg(ap, long long);
+	else if (elem->length.j >= 1)
+		n = (intmax_t)va_arg(ap, intmax_t);
+	else if (elem->length.z >= 1)
+		n = (size_t)va_arg(ap, size_t);
+	else
+		n = va_arg(ap, int);
+	if (n < 0)
 		znak = -1;
 	str = ft_itoa(n * znak);
 	if (elem->flag.zerro != 0 && elem->flag.minus == 0)
 		str = get_null(str, elem->width - (elem->flag.zerro > 0));
+	str = get_null(str, elem->precision);
 	size = ft_strlen(str);
 	if (elem->flag.plus > 0 || znak < 0)
 	{
@@ -69,11 +85,6 @@ int		ft_d(t_spec *elem, va_list ap)
 	{
 		size++;
 		ft_putchar(' ');
-	}
-	while (size < elem->width && !elem->flag.minus && elem->flag.zerro)
-	{
-		size++;
-		ft_putchar('0');
 	}
 	while (size < elem->width && !elem->flag.minus)
 	{
