@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 16:56:49 by rgyles            #+#    #+#             */
-/*   Updated: 2018/12/31 19:08:59 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/06 18:29:12 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ int		ft_xbig(t_spec *elem, va_list ap);
 int		ft_percent(t_spec *elem, va_list ap);
 int		ft_f(t_spec *elem, va_list ap);
 int		ft_output(t_spec *elem, char *str, int size);
+char	*ft_precision(char *str, int size);
 
 #endif

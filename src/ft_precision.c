@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_o.c                                             :+:      :+:    :+:   */
+/*   ft_precision.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/06 14:43:52 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/06 19:11:27 by rgyles           ###   ########.fr       */
+/*   Created: 2019/01/06 18:13:37 by rgyles            #+#    #+#             */
+/*   Updated: 2019/01/06 19:09:40 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rgyles.h"
 #include <stdio.h>
 
-int		ft_o(t_spec *elem, va_list ap)
+char	*ft_precision(char *str, int size)
 {
-	int		size;
-	char	*par;
-	char	*tmp;
+	int	i;
+	char *str_pre;
 
-	if ((par = ft_rebase(va_arg(ap, int), 8)) == NULL)
-		return (-1);
-	if (elem->precision != -1)
+	i = ft_strlen(str);
+	//printf("str - %s\n", str);
+	//if (size == 0)
+	//	return (ft_strsub(str, 0, 1));
+	str_pre = ft_memset(ft_strnew(size), '0', size);
+	while (size >= 0 && i >= 0)
 	{
-		tmp = par;
-		par = ft_precision(par, elem->precision);
-		free(tmp);
+		//printf("current digit - %c\n", *str);
+		str_pre[size--] = str[i--];
 	}
-	if (elem->flag.sharp == 1)
-	{
-		tmp = par;
-		par = ft_strjoin("0", par);
-		free(tmp);
-	}
-	size = ft_output(elem, par, ft_strlen(par));
-	free(par);
-	return (size);
+	return (str_pre);
 }
