@@ -6,7 +6,7 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:07:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/06 14:39:37 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/06 15:06:06 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ int		ft_output(t_spec *elem, char *str, int size)
 	while (size < elem->width && !elem->flag.minus)
 	{
 		size++;
-		ft_putchar(' ');
+		if (elem->flag.zerro == 1)
+			ft_putchar('0');
+		else
+			ft_putchar(' ');
 	}
 	ft_putstr(str);
 	while (size < elem->width && elem->flag.minus)
