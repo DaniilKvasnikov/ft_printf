@@ -32,7 +32,7 @@ static char	*get_minus(char *str)
 	return (res);
 }
 
-int			ft_x(t_spec *elem, va_list ap)
+/*int			ft_x(t_spec *elem, va_list ap)
 {
 	long long int	num;
 	char			*par;
@@ -81,6 +81,43 @@ int			ft_x(t_spec *elem, va_list ap)
 		size++;
 		ft_putchar(' ');
 	}
+	free(par);
+	return (size);
+}*/
+
+int			ft_x(t_spec *elem, va_list ap)
+{
+	long long int	num;
+	char			*par;
+	char			*tmp;
+	int				size;
+	char			znak;
+
+	num = (long long int)va_arg(ap, long long int);
+	if (elem->length.l == 1)
+		num = (long int)num;
+	else if (elem->length.l == 0)
+		num = (int)num;
+	else if (elem->length.h == 1)
+		num = (short int)num;
+	else if (elem->length.h == 2)
+		num = (unsigned int)num;
+	else if (elem->length.j >= 1)
+		num = (intmax_t)num;
+	znak = 1;
+	if (num < 0)
+	{
+		znak = -1;
+		num = num * (-1);
+	}
+	if ((par = ft_rebase(num, 16)) == NULL)
+		return (-1);
+	if (znak == -1)
+		par = get_minus(par);
+	size = ft_strlen(par);
+	if (elem->flag.sharp > 0 && num != 0)
+		size += 2;
+	size = ft_output(elem, par, size);
 	free(par);
 	return (size);
 }

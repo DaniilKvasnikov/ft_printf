@@ -6,7 +6,7 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:07:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/06 17:57:51 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/06 19:53:25 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 int		ft_output(t_spec *elem, char *str, int size)
 {
-	while (size < elem->width && !elem->flag.minus)
+	while (size < elem->width && !elem->flag.minus && !elem->flag.zerro)
 	{
 		size++;
-		if (elem->flag.zerro == 1)
-			ft_putchar('0');
-		else
-			ft_putchar(' ');
+		ft_putchar(' ');
+	}
+	if (elem->character == 'p' || (elem->flag.sharp == 1 && str[0] != '0'))
+		ft_putstr("0x");
+	while (size < elem->width && !elem->flag.minus && elem->flag.zerro)
+	{
+		size++;
+		ft_putchar('0');
 	}
 	ft_putstr(str);
 	while (size < elem->width && elem->flag.minus)
