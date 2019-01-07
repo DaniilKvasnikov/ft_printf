@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 16:30:43 by rrhaenys          #+#    #+#             */
-/*   Updated: 2018/12/31 16:30:59 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/07 19:42:41 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,13 +157,13 @@ int		ft_init_structure(t_spec *elem, char *str)
 	char *start;
 
 	start = str;
-//	ft_clear_structure(elem);
+	ft_clear_structure(elem);
 	str++;
 	str = get_flags(elem, str);
 	str = get_width(elem, str);
 	str = get_precision(elem, str);
 	str = get_length(elem, str);
 	str = get_character(elem, str);
-	print_structure(elem);
+	//print_structure(elem);
 	return (str - start);
 }

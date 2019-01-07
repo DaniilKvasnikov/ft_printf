@@ -6,14 +6,14 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 19:19:02 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/06 17:52:25 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/07 20:10:01 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rgyles.h"
 #include <stdio.h>
 
-static int		ft_d_zerro(t_spec *elem, va_list ap)
+/*static int		ft_d_zerro(t_spec *elem, va_list ap)
 {
 	int n;
 	int size;
@@ -57,7 +57,7 @@ int		ft_d(t_spec *elem, va_list ap)
 	sign = 1;
 	if ((n = va_arg(ap, int)) < 0)
 		sign = -1;
-	str = ft_itoa(n * sign);
+	str = ft_itoa_lli(n * sign);
 	if (elem->flag.plus == 1 || sign == -1)
 	{
 		tmp = str;
@@ -74,6 +74,40 @@ int		ft_d(t_spec *elem, va_list ap)
 		free(tmp);
 	}
 	size = ft_output(elem, str, ft_strlen(str) + size);
+	free(str);
+	return (size);
+}*/
+
+int		ft_d(t_spec *elem, va_list ap)
+{
+	long long int n;
+	int size;
+	char *str;
+
+	n = va_arg(ap, long long int);
+	if (elem->length.l == 1)
+		n = (long int)n;
+	else if (elem->length.j >= 1)
+		n = (intmax_t)n;
+	else if (elem->length.l == 0)
+		n = (int)n;
+	else if (elem->length.h == 1)
+		n = (short int)n;
+	else if (elem->length.h == 2)
+		n = (unsigned int)n;
+	//printf("n - %d\n", n);
+	//printf("n - %hd\n", n);
+	if (n >= 0)
+		str = ft_itoa_lli(n);
+	else
+	{
+		elem->flag.plus = 2;
+		str = ft_itoa_lli(n * (-1));
+	}
+	if (elem->flag.plus != 0 || elem->flag.space != 0)
+		size = ft_output(elem, str, ft_strlen(str) + 1);
+	else
+		size = ft_output(elem, str, ft_strlen(str));
 	free(str);
 	return (size);
 }
