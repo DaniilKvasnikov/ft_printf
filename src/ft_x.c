@@ -89,8 +89,7 @@ int			ft_x(t_spec *elem, va_list ap)
 {
 	long long int	num;
 	char			*par;
-	char			*tmp;
-	char			znak;
+	char			sign;
 	int				size;
 
 	num = (long long int)va_arg(ap, long long int);
@@ -104,10 +103,10 @@ int			ft_x(t_spec *elem, va_list ap)
 		num = (short int)num;
 	else if (elem->length.h == 2)
 		num = (unsigned int)num;
-	znak = 1;
+	sign = 1;
 	if (num < 0)
 	{
-		znak = -1;
+		sign = -1;
 		num = num * (-1);
 	}
 	if (num == 0 && elem->precision == 0)
@@ -119,7 +118,7 @@ int			ft_x(t_spec *elem, va_list ap)
 	{
 		if ((par = ft_rebase(num, 16)) == NULL)
 			return (-1);
-		if (znak == -1)
+		if (sign == -1)
 			par = get_minus(par);
 		if (elem->flag.sharp == 1 && num != 0)
 			size = ft_output(elem, par, ft_strlen(par) + 2);

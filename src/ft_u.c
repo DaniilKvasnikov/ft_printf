@@ -19,7 +19,7 @@ int		ft_u(t_spec *elem, va_list ap)
 	else
 		n = (unsigned int)n;
 	str = ft_itoa_ui(n);
-	if (elem->precision != -1 && elem->precision > ft_strlen(str))
+	if (elem->precision != -1 && elem->precision > (int)ft_strlen(str))
 	{
 		tmp = str;
 		str = ft_precision(str, elem->precision);
