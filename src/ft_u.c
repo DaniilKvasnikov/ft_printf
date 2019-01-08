@@ -1,13 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_u.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/08 14:08:48 by rgyles            #+#    #+#             */
+/*   Updated: 2019/01/08 14:35:36 by rgyles           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "rgyles.h"
-#include <stdio.h>
+#include "ft_rgyles.h"
 
 int		ft_u(t_spec *elem, va_list ap)
 {
-	int size;
-	unsigned long long int n;
-	char *tmp;
-	char *str;
+	int						size;
+	char					*tmp;
+	char					*str;
+	unsigned long long int	n;
 
 	n = va_arg(ap, unsigned long long int);
 	if (elem->length.l == 1)

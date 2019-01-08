@@ -6,12 +6,11 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 14:43:52 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/06 19:11:27 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/08 14:07:08 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rgyles.h"
-#include <stdio.h>
+#include "ft_rgyles.h"
 
 int		ft_o(t_spec *elem, va_list ap)
 {

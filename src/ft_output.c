@@ -6,11 +6,11 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:07:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/08 13:42:23 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/08 14:07:25 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rgyles.h"
+#include "ft_rgyles.h"
 
 void	flag_check(t_spec *elem)
 {

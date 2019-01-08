@@ -6,20 +6,19 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 15:20:28 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/06 15:20:36 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/08 14:15:49 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rgyles.h"
-#include <stdio.h>
+#include "ft_rgyles.h"
 #include "libft.h"
 
-char	*ft_dtoa(double n)
+static char	*ft_dtoa(double n)
 {
-	char *str;
-	char *dop;
-	char *res;
-	int i;
+	char	*str;
+	char	*dop;
+	char	*res;
+	int		i;
 
 	str = ft_itoa(n / 1);
 	if (n < 0)
@@ -29,11 +28,9 @@ char	*ft_dtoa(double n)
 	i = 0;
 	while (n >= 1)
 		n -= 1;
-//	printf("n0 - %f\n", n);
 	while (++i < 7)
 	{
 		n *= 10.0 + 1e-9;
-//		printf("n1 - %f\n", n);
 		dop[i] = (int)n + '0';
 		while (n >= 1)
 			n -= 1;
@@ -46,7 +43,7 @@ char	*ft_dtoa(double n)
 	return (res);
 }
 
-int		ft_f(t_spec *elem, va_list ap)
+int			ft_f(t_spec *elem, va_list ap)
 {
 	char	*str;
 	int		size;

@@ -6,12 +6,11 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 17:42:11 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/06 14:38:47 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/08 14:05:57 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rgyles.h"
-#include <stdio.h>
+#include "ft_rgyles.h"
 
 int		ft_s(t_spec *elem, va_list ap)
 {

@@ -6,12 +6,11 @@
 /*   By: rrhaenys <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 18:03:05 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/07 18:26:44 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/08 14:06:57 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rgyles.h"
-#include <stdio.h>
+#include "ft_rgyles.h"
 
 static int	get_size(unsigned long long int n)
 {
