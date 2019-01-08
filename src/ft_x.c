@@ -6,7 +6,7 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:09:12 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/08 17:57:16 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/08 20:21:53 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,46 +43,52 @@ static char	*get_minus(char *str)
 	return (res);
 }
 
+static long long int	allocator(t_spec *elem, long long int n)
+{
+	if (elem->length.l == 1)
+		return ((long int)n);
+	else if (elem->length.j >= 1)
+		return ((intmax_t)n);
+	else if (elem->length.l == 0)
+		return ((int)n);
+	else if (elem->length.h == 1)
+		return ((short int)n);
+	else if (elem->length.h == 2)
+		return ((unsigned int)n);
+	else
+		return (n);
+}
+
 int			ft_x(t_spec *elem, va_list ap)
 {
-	long long int	num;
-	char			*par;
+	long long int	n;
+	char			*str;
 	char			sign;
 	int				size;
 
-	num = (long long int)va_arg(ap, long long int);
-	if (elem->length.l == 1)
-		num = (long int)num;
-	else if (elem->length.j >= 1)
-		num = (intmax_t)num;
-	else if (elem->length.l == 0)
-		num = (int)num;
-	else if (elem->length.h == 1)
-		num = (short int)num;
-	else if (elem->length.h == 2)
-		num = (unsigned int)num;
+	n = allocator(elem, va_arg(ap, long long int));
 	sign = 1;
-	if (num < 0)
+	if (n < 0)
 	{
 		sign = -1;
-		num = num * (-1);
+		n = n * (-1);
 	}
-	if (num == 0 && elem->precision == 0)
+	if (n == 0 && elem->precision == 0)
 	{
 		elem->flag.sharp = 0;
 		size = ft_output(elem, "\0", 0);
 	}
 	else
 	{
-		if ((par = ft_rebase(num, 16)) == NULL)
+		if ((str = ft_rebase(n, 16)) == NULL)
 			return (-1);
 		if (sign == -1)
-			par = get_minus(par);
-		if (elem->flag.sharp == 1 && par[0] != '0')
-			size = ft_output(elem, par, ft_strlen(par) + 2);
+			str = get_minus(str);
+		if (elem->flag.sharp == 1 && str[0] != '0')
+			size = ft_output(elem, str, ft_strlen(str) + 2);
 		else
-			size = ft_output(elem, par, ft_strlen(par));	
-		free(par);
+			size = ft_output(elem, str, ft_strlen(str));	
+		free(str);
 	}
 	return (size);
 }
