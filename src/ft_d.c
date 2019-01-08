@@ -6,22 +6,11 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 19:19:02 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/08 16:40:39 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/08 19:28:50 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
-
-/*static char	*precision_check(char **str, t_spec *elem)
-{
-	char *tmp;
-
-	tmp = *str;
-	free(*str);
-	elem->flag.zerro = 0;
-	*tmp = ft_precision(tmp, elem->precision);
-	return (tmp);
-}*/
 
 int			ft_d(t_spec *elem, va_list ap)
 {

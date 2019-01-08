@@ -6,17 +6,17 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:07:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/08 18:38:21 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/08 19:25:43 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
 #include <stdio.h>
 
-static void	put_space(int *size)
+static void	put_space(int *size, char c)
 {
 	(*size)++;
-	ft_putchar(' ');
+	ft_putchar(c);
 }
 
 static void	flag_check(t_spec *elem)
@@ -53,24 +53,21 @@ static void sharp_check(t_spec *elem, char c, int size)
 
 int			ft_output(t_spec *elem, char *str, int size)
 {
-	if (elem->precision > 0 && elem->precision > (int)ft_strlen(str) && elem->character != 's' && *str != '0')
+	if (elem->precision > 0 && elem->precision > (int)ft_strlen(str) && elem->character != 's')
 	{
 		size += elem->precision - (int)ft_strlen(str);
 		str = precision_check(str, elem->precision);
 	}
 	while (size < elem->width && !elem->flag.minus && !elem->flag.zerro)
-		put_space(&size);
+		put_space(&size, ' ');
 	if (elem->flag.sharp == 1)
 		sharp_check(elem, str[0], size);
 	if (elem->character == 'd')
 		flag_check(elem);
 	while (size < elem->width && !elem->flag.minus && elem->flag.zerro)
-	{
-		size++;
-		ft_putchar('0');
-	}
+		put_space(&size, '0');
 	ft_putstr(str);
 	while (size < elem->width && elem->flag.minus)
-		put_space(&size);
+		put_space(&size, ' ');
 	return (size);
 }
