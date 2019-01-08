@@ -6,7 +6,7 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 15:20:28 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/08 14:15:49 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/08 16:44:00 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ int			ft_f(t_spec *elem, va_list ap)
 	int		size;
 
 	str = ft_dtoa(va_arg(ap, double));
-	size = ft_strlen(str);
-	size = ft_output(elem, str, size);
+	size = ft_output(elem, str, ft_strlen(str));
 	free(str);
 	return (size);
 }

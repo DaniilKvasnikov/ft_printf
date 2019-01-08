@@ -6,11 +6,12 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:09:12 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/08 14:09:27 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/08 17:57:16 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
+#include <stdio.h>
 
 static char	*get_minus(char *str)
 {
@@ -77,10 +78,10 @@ int			ft_x(t_spec *elem, va_list ap)
 			return (-1);
 		if (sign == -1)
 			par = get_minus(par);
-		if (elem->flag.sharp == 1 && num != 0)
+		if (elem->flag.sharp == 1 && par[0] != '0')
 			size = ft_output(elem, par, ft_strlen(par) + 2);
 		else
-			size = ft_output(elem, par, ft_strlen(par));
+			size = ft_output(elem, par, ft_strlen(par));	
 		free(par);
 	}
 	return (size);

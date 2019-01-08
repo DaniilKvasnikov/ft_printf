@@ -6,7 +6,7 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:08:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/08 14:35:36 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/08 18:05:23 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int		ft_u(t_spec *elem, va_list ap)
 	else
 		n = (unsigned int)n;
 	str = ft_itoa_ui(n);
-	if (elem->precision != -1 && elem->precision > (int)ft_strlen(str))
+	/*if (elem->precision != -1 && elem->precision > (int)ft_strlen(str))
 	{
 		tmp = str;
 		str = ft_precision(str, elem->precision);
 		free(tmp);
-	}
+	}*/
 	size = ft_output(elem, str, ft_strlen(str));
 	free(str);
 	return (size);

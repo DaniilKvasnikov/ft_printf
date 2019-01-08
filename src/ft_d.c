@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 19:19:02 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/08 14:54:02 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/08 16:40:39 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,8 @@ int			ft_d(t_spec *elem, va_list ap)
 		str = ft_itoa_lli(n, elem);
 	else
 		str = ft_itoa_lli((int)n, elem);
-	if (elem->precision != -1 && elem->precision > (int)ft_strlen(str))
-	{
-		tmp = str;
+	if (elem->precision > 0)
 		elem->flag.zerro = 0;
-		str = ft_precision(str, elem->precision);
-		free(tmp);
-	}
-	//if (elem->precision != -1 && elem->precision > (int)ft_strlen(str))
-	//	str = precision_check(&str, elem);
 	if (n == 0 && elem->precision == 0)
 		size = ft_output(elem, "\0", 0);
 	else if (elem->flag.plus != 0 || elem->flag.space != 0)
