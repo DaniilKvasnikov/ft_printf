@@ -6,11 +6,12 @@
 /*   By: rrhaenys <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 18:03:05 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/07 18:37:11 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/08 13:40:24 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "rgyles.h"
+#include <stdio.h>
 
 static int	get_size(long long int n)
 {
@@ -30,15 +31,18 @@ static int	get_size(long long int n)
 	return (size);
 }
 
-char		*ft_itoa_lli(long long int n)
+char		*ft_itoa_lli(long long int n, t_spec *elem)
 {
 	char	*res;
 	int		index;
 
 	if (n == 0)
 		return (ft_strdup("0"));
-	//if (n == -2147483648)
-	//	return (ft_strdup("-2147483648"));
+	if (n < 0)
+	{
+		elem->flag.plus = 2;
+		n *= (-1);
+	}
 	res = ft_strnew(get_size(n));
 	if (res == NULL)
 		return (NULL);
@@ -48,7 +52,6 @@ char		*ft_itoa_lli(long long int n)
 		n *= -1;
 		res[0] = '-';
 	}
-	res[index] = '\0';
 	while (n > 0)
 	{
 		index--;

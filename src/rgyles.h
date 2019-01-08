@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 16:56:49 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/07 18:37:59 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/08 13:14:21 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ int		ft_f(t_spec *elem, va_list ap);
 int		ft_output(t_spec *elem, char *str, int size);
 char	*ft_precision(char *str, int size);
 char	*ft_itoa_ui(unsigned long long int n);
-char	*ft_itoa_lli(long long int n);
+char	*ft_itoa_lli(long long int n, t_spec *elem);
 
 #endif

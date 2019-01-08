@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 19:19:02 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/07 20:10:01 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/08 13:48:50 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,28 +83,32 @@ int		ft_d(t_spec *elem, va_list ap)
 	long long int n;
 	int size;
 	char *str;
+	char *tmp;
 
 	n = va_arg(ap, long long int);
 	if (elem->length.l == 1)
-		n = (long int)n;
-	else if (elem->length.j >= 1)
-		n = (intmax_t)n;
-	else if (elem->length.l == 0)
-		n = (int)n;
+		str = ft_itoa_lli((long int)n, elem);
+	else if (elem->length.j == 1)
+		str = ft_itoa_lli((intmax_t)n, elem);
 	else if (elem->length.h == 1)
-		n = (short int)n;
+		str = ft_itoa_lli((short int)n, elem);
 	else if (elem->length.h == 2)
-		n = (unsigned int)n;
-	//printf("n - %d\n", n);
-	//printf("n - %hd\n", n);
-	if (n >= 0)
-		str = ft_itoa_lli(n);
+		str = ft_itoa_lli((signed char)n, elem);
+	else if (elem->length.l == 2)
+		str = ft_itoa_lli(n, elem);
 	else
+		str = ft_itoa_lli((int)n, elem);
+	if (elem->precision != -1 && elem->precision > (int)ft_strlen(str))
 	{
-		elem->flag.plus = 2;
-		str = ft_itoa_lli(n * (-1));
+		tmp = str;
+		elem->flag.zerro = 0;
+		str = ft_precision(str, elem->precision);
+		free(tmp);
 	}
-	if (elem->flag.plus != 0 || elem->flag.space != 0)
+	//printf("str - %s\n", str);
+	if (n == 0 && elem->precision == 0)
+		size = ft_output(elem, "\0", 0);
+	else if (elem->flag.plus != 0 || elem->flag.space != 0)
 		size = ft_output(elem, str, ft_strlen(str) + 1);
 	else
 		size = ft_output(elem, str, ft_strlen(str));
