@@ -6,7 +6,7 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 14:43:52 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/08 19:28:01 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/09 11:55:48 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		ft_o(t_spec *elem, va_list ap)
 	{
 		if (elem->flag.sharp == 1)
 			size = ft_output(elem, "\0", 1);
-		else 
+		else
 			size = ft_output(elem, "\0", 0);
 	}
 	else if (elem->flag.sharp == 1)

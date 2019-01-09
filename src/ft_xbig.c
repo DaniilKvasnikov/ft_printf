@@ -5,93 +5,55 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/08 14:09:45 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/08 14:09:50 by rgyles           ###   ########.fr       */
+/*   Created: 2019/01/09 12:01:39 by rgyles            #+#    #+#             */
+/*   Updated: 2019/01/09 12:47:14 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
 
-static char	*get_minus(char *str)
+static long long int	allocator(t_spec *elem, long long int n)
 {
-	char	*temp = "0123456789abcdef0";
-	int		index;
-	int		j;
-	char	*res;
-	char	c;
-
-	res =ft_strnew(8);
-	index = -1;
-	while (++index < (8 - ft_strlen(str)))
-		res[index] = 'f';
-	j = 0;
-	while (index < 8)
-	{
-		c = str[j++];
-		if (c >= '0' && c <= '9')
-			c = c - '0';
-		else if (c >= 'A' && c <= 'Z')
-			c = c - 'A' + 10;
-		else if (c >= 'a' && c <= 'z')
-			c = c - 'a' + 10;
-		c = 15 - c;
-		c = temp[c];
-		res[index++] = c + (index == 7);
-	}
-	free(str);
-	return (res);
+	if (elem->length.l == 1)
+		return ((long int)n);
+	else if (elem->length.j >= 1)
+		return ((intmax_t)n);
+	else if (elem->length.l == 0)
+		return ((int)n);
+	else if (elem->length.h == 1)
+		return ((short int)n);
+	else if (elem->length.h == 2)
+		return ((unsigned int)n);
+	else
+		return (n);
 }
 
-int		ft_xbig(t_spec *elem, va_list ap)
+int						ft_xbig(t_spec *elem, va_list ap)
 {
-	long long int	num;
-	char			*par;
 	int				size;
-	char			znak;
+	char			*str;
+	long long int	n;
 
-	num = (long long int)va_arg(ap, long long int);
-	if (elem->length.l == 1)
-		num = (long int)num;
-	else if (elem->length.l == 0)
-		num = (int)num;
-	else if (elem->length.h == 1)
-		num = (short int)num;
-	else if (elem->length.h == 2)
-		num = (unsigned int)num;
-	else if (elem->length.j >= 1)
-		num = (intmax_t)num;
-	znak = 1;
-	if (num < 0)
+	size = 0;
+	n = allocator(elem, va_arg(ap, long long int));
+	if (n == 0 && elem->precision == 0)
 	{
-		znak = -1;
-		num = num * (-1);
+		elem->flag.sharp = 0;
+		size = ft_output(elem, "\0", 0);
 	}
-	if ((par = ft_rebase(num, 16)) == NULL)
-		return (-1);
-	if (znak == -1)
-		par = get_minus(par);
-	size = ft_strlen(par);
-	if (elem->flag.sharp > 0 && num != 0)
-		size += 2;
-	while (size < elem->width && !elem->flag.minus && !elem->flag.zerro)
+	else
 	{
-		size++;
-		ft_putchar(' ');
+		if (n < 0)
+			str = ft_x_minus(ft_rebase(n * (-1), 16));
+		else
+			str = ft_rebase(n, 16);
+		if (str == NULL)
+			return (-1);
+		ft_toupper_str(str);
+		if (elem->flag.sharp == 1 && str[0] != '0')
+			size += 2;
+		size = ft_output(elem, str, ft_strlen(str) + size);
+		free(str);
 	}
-	if (elem->flag.sharp > 0 && num != 0)
-		ft_putstr("0X");
-	while (size < elem->width && !elem->flag.minus && elem->flag.zerro)
-	{
-		size++;
-		ft_putchar('0');
-	}
-	ft_toupper_str(par);
-	ft_putstr(par);
-	while (size < elem->width && elem->flag.minus)
-	{
-		size++;
-		ft_putchar(' ');
-	}
-	free(par);
 	return (size);
 }

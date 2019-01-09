@@ -6,12 +6,11 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:07:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/08 19:25:43 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/09 11:56:36 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
-#include <stdio.h>
 
 static void	put_space(int *size, char c)
 {
@@ -41,7 +40,7 @@ static char	*precision_check(char *str, int size)
 	return (str_pre);
 }
 
-static void sharp_check(t_spec *elem, char c, int size)
+static void	sharp_check(t_spec *elem, char c, int size)
 {
 	if (elem->character == 'p' || (elem->character == 'x' && c != '0'))
 		ft_putstr("0x");
@@ -53,7 +52,8 @@ static void sharp_check(t_spec *elem, char c, int size)
 
 int			ft_output(t_spec *elem, char *str, int size)
 {
-	if (elem->precision > 0 && elem->precision > (int)ft_strlen(str) && elem->character != 's')
+	if (elem->precision > 0 && elem->precision > (int)ft_strlen(str) &&
+		elem->character != 's')
 	{
 		size += elem->precision - (int)ft_strlen(str);
 		str = precision_check(str, elem->precision);
