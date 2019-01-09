@@ -6,38 +6,36 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:09:12 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/08 20:21:53 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/09 11:49:06 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
 #include <stdio.h>
 
-static char	*get_minus(char *str)
+static char				*get_minus(char *str)
 {
-	char	*temp = "0123456789abcdef0";
 	int		index;
 	int		j;
-	char	*res;
 	char	c;
+	char	*res;
+	char	*temp;
 
-	res = ft_strnew(8);
-	index = -1;
-	while (++index < (8 - ft_strlen(str)))
-		res[index] = 'f';
+	if (str == NULL || (res = ft_strnew(8)) == NULL)
+		return (NULL);
+	temp = "0123456789abcdef0";
+	ft_memset(res, 'f', 8);
+	index = 8 - ft_strlen(str);
 	j = 0;
 	while (index < 8)
 	{
 		c = str[j++];
 		if (c >= '0' && c <= '9')
 			c = c - '0';
-		else if (c >= 'A' && c <= 'Z')
-			c = c - 'A' + 10;
 		else if (c >= 'a' && c <= 'z')
 			c = c - 'a' + 10;
-		c = 15 - c;
-		c = temp[c];
-		res[index++] = c + (index == 7);
+		res[index] = temp[15 - c] + (index == 7);
+		index++;
 	}
 	free(str);
 	return (res);
@@ -59,20 +57,13 @@ static long long int	allocator(t_spec *elem, long long int n)
 		return (n);
 }
 
-int			ft_x(t_spec *elem, va_list ap)
+int						ft_x(t_spec *elem, va_list ap)
 {
-	long long int	n;
-	char			*str;
-	char			sign;
 	int				size;
+	char			*str;
+	long long int	n;
 
 	n = allocator(elem, va_arg(ap, long long int));
-	sign = 1;
-	if (n < 0)
-	{
-		sign = -1;
-		n = n * (-1);
-	}
 	if (n == 0 && elem->precision == 0)
 	{
 		elem->flag.sharp = 0;
@@ -80,14 +71,16 @@ int			ft_x(t_spec *elem, va_list ap)
 	}
 	else
 	{
-		if ((str = ft_rebase(n, 16)) == NULL)
+		if (n < 0)
+			str = get_minus(ft_rebase(n * (-1), 16));
+		else
+			str = ft_rebase(n, 16);
+		if (str == NULL)
 			return (-1);
-		if (sign == -1)
-			str = get_minus(str);
 		if (elem->flag.sharp == 1 && str[0] != '0')
 			size = ft_output(elem, str, ft_strlen(str) + 2);
 		else
-			size = ft_output(elem, str, ft_strlen(str));	
+			size = ft_output(elem, str, ft_strlen(str));
 		free(str);
 	}
 	return (size);
