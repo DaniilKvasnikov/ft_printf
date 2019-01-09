@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 19:19:02 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/08 19:53:52 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/09 13:35:22 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static char	*allocator(t_spec *elem, long long int n)
 {
 	if (elem->length.l == 1)
 		return (ft_itoa_lli((long int)n, elem));
+	else if (elem->length.z == 1)
+		return (ft_itoa_lli((ssize_t)n, elem));
 	else if (elem->length.j == 1)
 		return (ft_itoa_lli((intmax_t)n, elem));
 	else if (elem->length.h == 1)

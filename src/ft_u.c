@@ -6,7 +6,7 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:08:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/09 11:53:59 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/09 13:25:04 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 int		ft_u(t_spec *elem, va_list ap)
 {
 	int						size;
-	char					*tmp;
 	char					*str;
 	unsigned long long int	n;
 
 	n = va_arg(ap, unsigned long long int);
-	if (elem->length.l == 1)
+	if (elem->length.l == 1 || elem->character == 'U')
 		n = (unsigned long int)n;
 	else if (elem->length.l == 2)
 		n = (unsigned long int)n;
