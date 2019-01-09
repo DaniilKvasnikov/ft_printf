@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 18:07:37 by rgyles            #+#    #+#             */
-/*   Updated: 2018/12/27 19:07:39 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/10 00:42:51 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 
 # include "ft_printf.h"
 
-const t_func funs[] = {
+const t_func	g_funs[] = {
 	{'c', &ft_c},
 	{'d', &ft_d},
 	{'u', &ft_u},
+	{'U', &ft_u},
 	{'i', &ft_i},
 	{'s', &ft_s},
 	{'p', &ft_p},
 	{'x', &ft_x},
-	{'X', &ft_xbig},
+	{'X', &ft_x},
 	{'%', &ft_percent},
 	{'o', &ft_o},
 	{'f', &ft_f},

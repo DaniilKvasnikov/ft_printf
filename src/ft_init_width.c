@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_c.c                                             :+:      :+:    :+:   */
+/*   ft_init_width.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/06 14:39:23 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/10 02:21:01 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/01/10 01:17:24 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/01/10 01:17:48 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_rgyles.h"
+#include "ft_printf.h"
 
-int		ft_c(t_spec *elem, va_list ap)
+char	*get_width(t_spec *elem, char *str)
 {
-	int		size;
-	char	c;
+	int	index;
+	int	sum;
+	int num;
 
-	size = 1;
-	c = (unsigned int)va_arg(ap, int);
-	while (size < elem->width && !elem->flag.minus)
+	index = 0;
+	sum = 0;
+	while ((num = is_num(str[index])) >= 0)
 	{
-		size++;
-		if (!elem->flag.zerro)
-			ft_putchar(' ');
-		else
-			ft_putchar('0');
+		sum = sum * 10 + num;
+		if (sum < 0)
+		{
+			sum = 0;
+			break ;
+		}
+		index++;
 	}
-	ft_putchar(c);
-	while (size < elem->width && elem->flag.minus)
-	{
-		size++;
-		ft_putchar(' ');
-	}
-	return (size);
+	while ((num = is_num(str[index])) >= 0)
+		index++;
+	elem->width = sum;
+	return (&(str[index]));
 }

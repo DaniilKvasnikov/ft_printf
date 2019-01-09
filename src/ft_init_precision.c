@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_c.c                                             :+:      :+:    :+:   */
+/*   ft_init_precision.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/06 14:39:23 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/10 02:21:01 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/01/10 01:18:14 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/01/10 01:38:21 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_rgyles.h"
+#include "ft_printf.h"
 
-int		ft_c(t_spec *elem, va_list ap)
+char	*get_precision(t_spec *elem, char *str)
 {
-	int		size;
-	char	c;
+	int	index;
+	int	sum;
+	int num;
 
-	size = 1;
-	c = (unsigned int)va_arg(ap, int);
-	while (size < elem->width && !elem->flag.minus)
+	index = 1;
+	sum = 0;
+	if (str[index - 1] != '.')
 	{
-		size++;
-		if (!elem->flag.zerro)
-			ft_putchar(' ');
-		else
-			ft_putchar('0');
+		elem->precision = -1;
+		return (&(str[0]));
 	}
-	ft_putchar(c);
-	while (size < elem->width && elem->flag.minus)
+	while ((num = is_num(str[index])) >= 0)
 	{
-		size++;
-		ft_putchar(' ');
+		sum = sum * 10 + num;
+		if (sum < 0)
+		{
+			sum = -1;
+			break ;
+		}
+		index++;
 	}
-	return (size);
+	while ((num = is_num(str[index])) >= 0)
+		index++;
+	elem->precision = sum;
+	return (&(str[index]));
 }

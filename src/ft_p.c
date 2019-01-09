@@ -1,16 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_p.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/06 14:39:49 by rgyles            #+#    #+#             */
+/*   Updated: 2019/01/08 17:57:18 by rgyles           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "rgyles.h"
-#include <stdio.h>
+#include "ft_rgyles.h"
 
 int		ft_p(t_spec *elem, va_list ap)
 {
-	char *par;
+	int		size;
+	char	*p;
 
-	if ((par = ft_rebase((long long)va_arg(ap, void*), 16)) == NULL)
+	if ((p = ft_rebase((long long)va_arg(ap, void*), 16)) == NULL)
 		return (-1);
-	ft_putstr("0x");
-	ft_putstr(par);
-	free(par);
-	return (0);
-	ap = 0;
+	size = ft_output(elem, p, ft_strlen(p) + 2);
+	free(p);
+	return (size);
 }

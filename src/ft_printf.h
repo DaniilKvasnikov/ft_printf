@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 14:22:27 by rrhaenys          #+#    #+#             */
-/*   Updated: 2018/12/27 19:08:12 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/10 01:39:47 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,15 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "ft_rrhaenys.h"
-# include "rgyles.h"
+# include "ft_rgyles.h"
 
 int		ft_printf(const char *format, ...);
 int		ft_init_structure(t_spec *elem, char *str);
 int		ft_put_structure(t_spec *elem, va_list ap);
+int		is_num(char c);
+char	*get_flags(t_spec *elem, char *str);
+char	*get_width(t_spec *elem, char *str);
+char	*get_length(t_spec *elem, char *str);
+char	*get_precision(t_spec *elem, char *str);
 
 #endif

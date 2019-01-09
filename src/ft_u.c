@@ -1,51 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_u.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/08 14:08:48 by rgyles            #+#    #+#             */
+/*   Updated: 2019/01/10 00:35:13 by rrhaenys         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "rgyles.h"
-#include <stdio.h>
-#include <stdint.h>
+#include "ft_rgyles.h"
 
 int		ft_u(t_spec *elem, va_list ap)
 {
-	char *str;
-	int size;
-	unsigned long long n;
+	int						size;
+	char					*str;
+	unsigned long long int	n;
 
-	if (elem->length.l == 1)
-		n = (unsigned long)va_arg(ap, long);
+	n = va_arg(ap, unsigned long long int);
+	if (elem->length.l == 1 || elem->character == 'U')
+		n = (unsigned long int)n;
 	else if (elem->length.l == 2)
-		n = (unsigned long long)va_arg(ap, long long);
-	else if (elem->length.j >= 1)
-		n = (intmax_t)va_arg(ap, intmax_t);
-	else if (elem->length.l == 0)
-		n = (unsigned int)va_arg(ap, int);
-	str = ft_iutoa(n);
-	size = ft_strlen(str);
-	if (elem->precision != -1)
-	{
-		while (size < elem->precision)
-		{
-			size++;
-			ft_putchar('0');
-		}
-		ft_putstr(str);
-		free(str);
-		return (size);
-	}
-	while (size < elem->width && !elem->flag.minus && elem->flag.zerro)
-	{
-		size++;
-		ft_putchar('0');
-	}
-	while (size < elem->width && !elem->flag.minus && elem->precision == -1)
-	{
-		size++;
-		ft_putchar(' ');
-	}
-	ft_putstr(str);
-	while (size < elem->width && elem->precision == -1)
-	{
-		size++;
-		ft_putchar(' ');
-	}
+		n = (unsigned long int)n;
+	else if (elem->length.j == 1)
+		n = (uintmax_t)n;
+	else
+		n = (unsigned int)n;
+	str = ft_itoa_ui(n);
+	size = ft_output(elem, str, ft_strlen(str));
 	free(str);
 	return (size);
 }

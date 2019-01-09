@@ -1,20 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_init_flags.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/18 22:40:57 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/10 02:32:16 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/01/10 01:14:57 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/01/10 01:17:05 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "stdio.h"
 
-int	main(void)
+int		is_flag(t_spec *elem, char c)
 {
-	ft_printf("%lld", -9223372036854775808);
+	if (c == '-')
+		return (elem->flag.minus = 1);
+	else if (c == '+')
+		return (elem->flag.plus = 1);
+	else if (c == ' ')
+		return (elem->flag.space = 1);
+	else if (c == '0')
+		return (elem->flag.zerro = 1);
+	else if (c == '#')
+		return (elem->flag.sharp = 1);
 	return (0);
+}
+
+char	*get_flags(t_spec *elem, char *str)
+{
+	int	index;
+
+	index = 0;
+	while (is_flag(elem, str[index]))
+		index++;
+	return (&(str[index]));
 }

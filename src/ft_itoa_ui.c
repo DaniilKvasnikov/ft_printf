@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iutoa.c                                         :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rrhaenys <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 18:03:05 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/10 01:50:34 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/09 13:22:30 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_rgyles.h"
 
-static int	get_size(unsigned long long n)
+static int	get_size(unsigned long long int n)
 {
 	int		size;
 
@@ -25,7 +25,7 @@ static int	get_size(unsigned long long n)
 	return (size);
 }
 
-char		*ft_iutoa(unsigned long long n)
+char		*ft_itoa_ui(unsigned long long int n)
 {
 	char	*res;
 	int		index;

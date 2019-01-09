@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 14:29:25 by rrhaenys          #+#    #+#             */
-/*   Updated: 2018/12/31 13:42:28 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/10 00:37:22 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,16 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	va_copy(ap2, ap);
 	while (*format)
-	{
 		if (*format == '%')
 		{
-			format += ft_init_structure(spec, (char *)format) - 1;
+			format += ft_init_structure(spec, (char *)format);
 			result += ft_put_structure(spec, ap);
 		}
 		else
 		{
-			write(1, format, 1);
+			write(1, format++, 1);
 			result++;
 		}
-		format++;
-	}
 	va_end(ap);
 	va_end(ap2);
 	free(spec);

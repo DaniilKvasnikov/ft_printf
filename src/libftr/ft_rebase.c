@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rebase.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/09 11:56:48 by rgyles            #+#    #+#             */
+/*   Updated: 2019/01/09 11:59:14 by rgyles           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	get_size(long long n, int base)
@@ -15,10 +27,11 @@ static int	get_size(long long n, int base)
 
 char		*ft_rebase(long long n, int base)
 {
-	char	*str = "0123456789abcdef";
+	char	*str;
 	char	*res;
 	int		index;
 
+	str = "0123456789abcdef";
 	if ((res = (char *)malloc(sizeof(char) * (get_size(n, base) + 1))) == NULL)
 		return (NULL);
 	index = get_size(n, base) + 1;
