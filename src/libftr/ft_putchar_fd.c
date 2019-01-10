@@ -12,15 +12,14 @@
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putchar_fd(int c, int fd)
 {
 	char	ds[2];
 
-	if (c >= 0)
+	if (c < 0x80)
 		write(fd, &c, 1);
 	else
 	{
-		c += 0x80;
 		ds[0] = 0xC2 + (c / 64);
 		ds[1] = (c % 64) + 0x80;
 		write(fd, ds, 2);
