@@ -15,26 +15,14 @@
 void	ft_putchar_fd(char c, int fd)
 {
 	char	ds[2];
-	int		new;
 
 	if (c >= 0)
 		write(fd, &c, 1);
 	else
 	{
-		if (c < -64)
-		{
-			c += 0x80;
-			new = c + 0x80;
-			ds[0] = 0xC2;
-			ds[1] = new;
-			write(fd, ds, 2);
-		}
-		else
-		{
-			c += 0x80;
-			ds[0] = 0xC3;
-			ds[1] = (int)c + 0x80 - 64;
-			write(fd, ds, 2);
-		}
+		c += 0x80;
+		ds[0] = 0xC2 + (c / 64);
+		ds[1] = (c % 64) + 0x80;
+		write(fd, ds, 2);
 	}
 }

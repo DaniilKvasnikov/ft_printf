@@ -15,6 +15,8 @@
 
 int	main(void)
 {
-	ft_printf("%lld", -9223372036854775808);
+//	ft_printf("%lld", -9223372036854775808);
+	for (int i = 0; i < (0x80 + 256); i++)
+		ft_putchar_fd(i, 1);
 	return (0);
 }
