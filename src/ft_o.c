@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 14:43:52 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 19:57:42 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/12 20:48:30 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 
 static long long int	get_num(t_spec *elem, va_list ap)
 {
-	if (elem->length.l == 1 || elem->character == 'O')
+	if (elem->length.l == 1)
 		return ((long int)va_arg(ap, long int));
 	else if (elem->length.l == 2)
 		return ((long long int)va_arg(ap, long long int));
 	else if (elem->length.h == 1)
-		return ((short int)va_arg(ap, int));
+		return ((int)va_arg(ap, int));
 	else if (elem->length.h == 2)
 		return ((unsigned int)va_arg(ap, unsigned int));
 	else if (elem->length.j >= 1)
