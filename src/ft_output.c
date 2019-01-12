@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:07:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 19:30:28 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/12 21:14:56 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	sharp_check(t_spec *elem, char c)
 		ft_putstr("0x");
 	else if (elem->character == 'X')
 		ft_putstr("0X");
-	else if (elem->character == 'o')
+	else if (elem->character == 'o' || elem->character == 'O')
 		ft_putchar('0');
 }
 

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 14:43:52 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 20:48:30 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/12 21:12:34 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,19 @@ int						ft_o(t_spec *elem, va_list ap)
 		num *= (znak = -1);
 	if ((par = ft_rebase(num, 8)) == NULL)
 		return (-1);
-	if (elem->precision != -1 && par[0] == '0')
+	if (elem->flag.sharp == 1 && num == 0)
 	{
-		if (elem->flag.sharp == 1)
-			size = ft_output(elem, "\0", 1);
-		else
-			size = ft_output(elem, "\0", 0);
+		elem->flag.sharp = 0;
+		size = 0;
 	}
 	else if (elem->flag.sharp == 1)
-		size = ft_output(elem, par, ft_strlen(par) + 1);
+		size = 1;
 	else
-		size = ft_output(elem, par, ft_strlen(par));
+		size = 0;
+	if (elem->precision != -1 && par[0] == '0')
+		size = ft_output(elem, "\0", size);
+	else
+		size = ft_output(elem, par, ft_strlen(par) + size);
 	free(par);
 	return (size);
 }
