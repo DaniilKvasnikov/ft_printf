@@ -6,14 +6,23 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 15:20:28 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/10 00:40:10 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/12 22:51:24 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
 #include "libft.h"
 
-static char	*ft_dtoa(double n)
+static double	ft_dop(double n)
+{
+	unsigned long long c;
+
+	c = n;
+	n -= c;
+	return n;
+}
+
+static char		*ft_dtoa(double n)
 {
 	char	*str;
 	char	*dop;
@@ -25,8 +34,7 @@ static char	*ft_dtoa(double n)
 	dop = ft_strnew(7);
 	dop[0] = '.';
 	i = 0;
-	while (n >= 1)
-		n -= 1;
+	n = ft_dop(n);
 	while (++i < 7)
 	{
 		n *= 10.0 + 1e-9;
@@ -42,7 +50,7 @@ static char	*ft_dtoa(double n)
 	return (res);
 }
 
-int			ft_f(t_spec *elem, va_list ap)
+int				ft_f(t_spec *elem, va_list ap)
 {
 	char	*str;
 	int		size;

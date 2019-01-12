@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 16:30:43 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/12 21:52:24 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/12 22:33:29 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		is_character(t_spec *elem, char c)
 {
 	char *characters;
 
-	characters = "dDioOuUxXcCeEfgGsSp%";
+	characters = "dDioOuUxXcCeEfFgGsSp%";
 	while (*characters != '\0')
 	{
 		if (c == *characters)
