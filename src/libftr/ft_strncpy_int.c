@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_array.h                                         :+:      :+:    :+:   */
+/*   ft_strncpy_int.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/27 18:07:37 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 19:30:28 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/01/12 19:25:54 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/01/12 19:29:19 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ARRAY_H
-# define FT_ARRAY_H
+#include "libft.h"
 
-# include "ft_printf.h"
+int		*ft_strncpy_int(int *dst, const int *src, size_t len)
+{
+	int *point;
 
-const t_func	g_funs[] = {
-	{'C', &ft_c},
-	{'c', &ft_c},
-	{'d', &ft_d},
-	{'u', &ft_u},
-	{'U', &ft_u},
-	{'i', &ft_i},
-	{'s', &ft_s},
-	{'S', &ft_sbig},
-	{'p', &ft_p},
-	{'x', &ft_x},
-	{'X', &ft_x},
-	{'%', &ft_percent},
-	{'o', &ft_o},
-	{'f', &ft_f},
-	{'0', NULL}};
-
-#endif
+	point = dst;
+	while (len > 0 && *src != '\0')
+	{
+		*dst = *src;
+		dst++;
+		src++;
+		len--;
+	}
+	while (len > 0)
+	{
+		*dst = '\0';
+		dst++;
+		len--;
+	}
+	return (point);
+}

@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_array.h                                         :+:      :+:    :+:   */
+/*   ft_strsub_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/27 18:07:37 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 19:30:28 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/01/12 19:33:29 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/01/12 19:33:44 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ARRAY_H
-# define FT_ARRAY_H
+#include "libft.h"
 
-# include "ft_printf.h"
+int		*ft_strsub_int(int *s, unsigned int start, size_t len)
+{
+	int *res;
 
-const t_func	g_funs[] = {
-	{'C', &ft_c},
-	{'c', &ft_c},
-	{'d', &ft_d},
-	{'u', &ft_u},
-	{'U', &ft_u},
-	{'i', &ft_i},
-	{'s', &ft_s},
-	{'S', &ft_sbig},
-	{'p', &ft_p},
-	{'x', &ft_x},
-	{'X', &ft_x},
-	{'%', &ft_percent},
-	{'o', &ft_o},
-	{'f', &ft_f},
-	{'0', NULL}};
-
-#endif
+	if (s == NULL)
+		return (NULL);
+	res = ft_strnew_int(len);
+	if (res == NULL)
+		return (NULL);
+	res = ft_strncpy_int(res, s + start, len);
+	return (res);
+}

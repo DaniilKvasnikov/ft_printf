@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rgyles.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:10:10 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 16:32:21 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/12 19:35:31 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ int				ft_d(t_spec *elem, va_list ap);
 int				ft_i(t_spec *elem, va_list ap);
 int				ft_u(t_spec *elem, va_list ap);
 int				ft_s(t_spec *elem, va_list ap);
+int				ft_sbig(t_spec *elem, va_list ap);
 int				ft_p(t_spec *elem, va_list ap);
 int				ft_x(t_spec *elem, va_list ap);
 int				ft_percent(t_spec *elem, va_list ap);
 int				ft_f(t_spec *elem, va_list ap);
 int				ft_output(t_spec *elem, char *str, int size);
+int				ft_output_int(t_spec *elem, int *str, int size);
 char			*ft_x_minus(char *str);
 char			*ft_precision(char *str, int size);
 char			*ft_itoa_ui(unsigned long long int n);

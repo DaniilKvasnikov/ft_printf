@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_array.h                                         :+:      :+:    :+:   */
+/*   ft_strlen_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/27 18:07:37 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 19:30:28 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/01/12 19:24:29 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/01/12 21:47:22 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ARRAY_H
-# define FT_ARRAY_H
+#include "libft.h"
 
-# include "ft_printf.h"
+size_t	ft_strlen_int(int *str)
+{
+	size_t len;
+	size_t size;
 
-const t_func	g_funs[] = {
-	{'C', &ft_c},
-	{'c', &ft_c},
-	{'d', &ft_d},
-	{'u', &ft_u},
-	{'U', &ft_u},
-	{'i', &ft_i},
-	{'s', &ft_s},
-	{'S', &ft_sbig},
-	{'p', &ft_p},
-	{'x', &ft_x},
-	{'X', &ft_x},
-	{'%', &ft_percent},
-	{'o', &ft_o},
-	{'f', &ft_f},
-	{'0', NULL}};
-
-#endif
+	len = 0;
+	size = 0;
+	while (str[len] != '\0')
+	{
+		if (str[len] < 0x80)
+			size++;
+		else
+		{
+			if (str[len] >= 0x00000800)
+				size += 3;
+			else if (str[len] >= 0x00000080)
+				size += 2;
+		}
+		len++;
+	}
+	return (size);
+}

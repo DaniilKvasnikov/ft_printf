@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_percent.c                                       :+:      :+:    :+:   */
+/*   ft_output_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/06 14:39:40 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 19:12:04 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/01/12 19:35:03 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/01/12 19:40:59 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
+#include <stdio.h>
 
-int		ft_percent(t_spec *elem, va_list ap)
+static void	put_space(int *size, char c)
 {
-	int	size;
+	(*size)++;
+	ft_putchar(c);
+}
 
-	(void)ap;
-	elem->precision = -1;
-	size = ft_output(elem, "%", 1);
+int			ft_output_int(t_spec *elem, int *str, int size)
+{
+	while (size < elem->width && !elem->flag.minus && !elem->flag.zerro)
+		put_space(&size, ' ');
+	while (size < elem->width && !elem->flag.minus && elem->flag.zerro)
+		put_space(&size, '0');
+	ft_putstr_int(str);
+	while (size < elem->width && elem->flag.minus)
+		put_space(&size, ' ');
 	return (size);
 }

@@ -6,11 +6,38 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 17:42:11 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/08 17:57:47 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/12 19:53:16 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
+
+int		ft_sbig(t_spec *elem, va_list ap)
+{
+	int		size;
+	int		*str;
+
+	size = 0;
+	str = (int *)va_arg(ap, int*);
+	if (str == NULL)
+	{
+		ft_putstr("(null)");
+		return (6);
+	}
+	if (elem->precision != -1)
+	{
+		str = ft_strsub_int(str, 0, elem->precision);
+		size = ft_strlen_int(str);
+		size = ft_output_int(elem, str, size);
+		free(str);
+	}
+	else
+	{
+		size = ft_strlen_int(str);
+		size = ft_output_int(elem, str, size);
+	}
+	return (size);
+}
 
 int		ft_s(t_spec *elem, va_list ap)
 {
