@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 18:07:37 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 18:57:28 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/12 19:58:25 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ const t_func	g_funs[] = {
 	{'C', &ft_c},
 	{'c', &ft_c},
 	{'d', &ft_d},
+	{'D', &ft_d},
 	{'u', &ft_u},
 	{'U', &ft_u},
 	{'i', &ft_i},
@@ -28,6 +29,7 @@ const t_func	g_funs[] = {
 	{'X', &ft_x},
 	{'%', &ft_percent},
 	{'o', &ft_o},
+	{'O', &ft_o},
 	{'f', &ft_f},
 	{'0', NULL}};
 

@@ -6,7 +6,7 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:10:10 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 16:32:21 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/12 20:17:41 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <sys/types.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 # include "ft_spec.h"
 # include "libftr/libft.h"
 

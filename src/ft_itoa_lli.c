@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 18:03:05 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/10 02:36:55 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/12 20:18:34 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ char		*ft_itoa_lli(long long int n, t_spec *elem)
 	if (n < 0)
 	{
 		elem->flag.plus = 2;
+		if (n == LONG_MIN)
+			return (ft_strdup("9223372036854775808"));
 		n *= (-1);
 	}
 	index = get_size(n);

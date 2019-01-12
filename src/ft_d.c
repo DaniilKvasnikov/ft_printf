@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 19:19:02 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/10 02:32:35 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/12 20:10:07 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,13 @@ int			ft_d(t_spec *elem, va_list ap)
 	int				size;
 	char			*str;
 
-	str = allocator(elem, va_arg(ap, long long int));
+	if (elem->character == 'D')
+	{
+		elem->character = 'd';
+		str = ft_itoa_lli(va_arg(ap, long long int), elem);
+	}
+	else
+		str = allocator(elem, va_arg(ap, long long int));
 	if (elem->precision > 0)
 		elem->flag.zerro = 0;
 	if (str[0] == '0' && elem->precision == 0)
