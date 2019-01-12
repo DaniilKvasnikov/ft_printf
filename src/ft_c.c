@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 14:39:23 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/10 02:21:01 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/12 16:16:46 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 int		ft_c(t_spec *elem, va_list ap)
 {
 	int		size;
-	char	c;
+	int		c;
 
 	size = 1;
-	c = (unsigned int)va_arg(ap, int);
+	c = (int)va_arg(ap, int);
 	while (size < elem->width && !elem->flag.minus)
 	{
 		size++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 21:24:18 by rrhaenys          #+#    #+#             */
-/*   Updated: 2018/11/23 21:24:19 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/12 18:54:09 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,22 @@
 
 void	ft_putchar_fd(int c, int fd)
 {
-	char	ds[2];
+	char	ds[3];
 
 	if (c < 0x80)
 		write(fd, &c, 1);
+	else if (c < 2048)
+	{
+		ds[0] = 0xc0 + (c / 64);
+		ds[1] = 0x80 + (c % 64);
+		write(fd, ds, 3);
+	}
 	else
 	{
-		ds[0] = 0xC2 + (c / 64);
-		ds[1] = (c % 64) + 0x80;
-		write(fd, ds, 2);
+		ds[0] = 0xe0 + (c / 4096);
+		c -= (c / 2048) * 2048;
+		ds[1] = 0xa0 + (c / 64);
+		ds[2] = 0x80 + (c % 64);
+		write(fd, ds, 3);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 18:07:37 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/10 00:42:51 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/12 18:57:28 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "ft_printf.h"
 
 const t_func	g_funs[] = {
+	{'C', &ft_c},
 	{'c', &ft_c},
 	{'d', &ft_d},
 	{'u', &ft_u},

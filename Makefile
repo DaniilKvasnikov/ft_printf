@@ -6,7 +6,7 @@
 #    By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/27 14:25:41 by rrhaenys          #+#    #+#              #
-#    Updated: 2019/01/10 02:40:51 by rrhaenys         ###   ########.fr        #
+#    Updated: 2019/01/12 15:28:10 by rrhaenys         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,9 @@ OBJ	= $(SRCS:.c=.o) $(LIBFT_SRCS:.c=.o)
 
 all: $(NAME)
 
-test:
+test: all main.o
+	gcc -I src -I src/libftr -o test.out main.o $(NAME)
+	./test.out
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
