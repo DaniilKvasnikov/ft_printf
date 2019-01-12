@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 14:39:23 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 16:16:46 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/12 22:10:25 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ int		ft_c(t_spec *elem, va_list ap)
 	int		size;
 	int		c;
 
-	size = 1;
 	c = (int)va_arg(ap, int);
+	size = 1;
+	if (c >= 0x00000800)
+		size = 3;
+	else if (c >= 0x00000080)
+		size = 2;
 	while (size < elem->width && !elem->flag.minus)
 	{
 		size++;
