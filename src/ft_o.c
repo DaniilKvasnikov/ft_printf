@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 14:43:52 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 22:14:09 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/12 22:17:51 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,12 @@ int						ft_o(t_spec *elem, va_list ap)
 	if (elem->flag.sharp == 1 && num == 0)
 	{
 		elem->flag.sharp = 0;
-		size = 1;
-		ft_putchar('0');
+		size = 0;
+		if (elem->precision != -1)
+		{
+			size = 1;
+			ft_putchar('0');
+		}
 	}
 	else if (elem->flag.sharp == 1)
 		size = 1;
