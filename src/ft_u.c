@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:08:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/10 00:35:13 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/12 19:06:51 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,13 @@ int		ft_u(t_spec *elem, va_list ap)
 		n = (uintmax_t)n;
 	else
 		n = (unsigned int)n;
-	str = ft_itoa_ui(n);
-	size = ft_output(elem, str, ft_strlen(str));
-	free(str);
+	if (n == 0 && elem->precision != -1)
+		size = ft_output(elem, "\0", 0);
+	else
+	{
+		str = ft_itoa_ui(n);
+		size = ft_output(elem, str, ft_strlen(str));
+		free(str);
+	}
 	return (size);
 }

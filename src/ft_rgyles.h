@@ -6,7 +6,7 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:10:10 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/09 13:53:20 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/12 16:32:21 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "ft_spec.h"
-# include "libft.h"
+# include "libftr/libft.h"
 
 typedef struct	s_func
 {

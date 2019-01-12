@@ -6,11 +6,12 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:07:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/10 02:10:21 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/12 19:06:45 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
+#include <stdio.h>
 
 static void	put_space(int *size, char c)
 {
@@ -28,18 +29,29 @@ static void	flag_check(t_spec *elem)
 		ft_putchar(' ');
 }
 
-static char	*precision_check(char *str, int size)
+static char	*precision_check(char *str, t_spec *elem)
 {
 	int		i;
+	int		size;
 	char	*str_pre;
 	char	*newstr;
 
-	i = ft_strlen(str);
-	newstr = ft_strnew(size);
-	str_pre = ft_memset(newstr, '0', size);
-	while (size >= 0 && i >= 0)
-		str_pre[size--] = str[i--];
-	free(newstr);
+	size = elem->precision;
+	if (elem->character == 'f')
+	{
+		size += ft_strchr(str, '.') - str + 1;
+		str_pre = ft_memset(ft_strnew(size), '0', size);
+		i = -1;
+		while (++i < size && str[i] != '\0')
+			str_pre[i] = str[i];
+	}
+	else
+	{
+		i = ft_strlen(str);
+		str_pre = ft_memset(ft_strnew(size), '0', size);
+		while (size >= 0 && i >= 0)
+			str_pre[size--] = str[i--];
+	}
 	return (str_pre);
 }
 
@@ -55,11 +67,10 @@ static void	sharp_check(t_spec *elem, char c)
 
 int			ft_output(t_spec *elem, char *str, int size)
 {
-	if (elem->precision > 0 && elem->precision > (int)ft_strlen(str) &&
-		elem->character != 's')
+	if (elem->precision > 0 && elem->character != 's')
 	{
 		size += elem->precision - (int)ft_strlen(str);
-		str = precision_check(str, elem->precision);
+		str = precision_check(str, elem);
 	}
 	while (size < elem->width && !elem->flag.minus && !elem->flag.zerro)
 		put_space(&size, ' ');
