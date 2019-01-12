@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:07:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 19:06:45 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/12 19:30:28 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	*precision_check(char *str, t_spec *elem)
 	int		i;
 	int		size;
 	char	*str_pre;
-	char	*newstr;
+	//char	*newstr;
 
 	size = elem->precision;
 	if (elem->character == 'f')
