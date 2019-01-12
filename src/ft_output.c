@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:07:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 21:53:19 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/12 23:07:19 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,11 @@ static char	*precision_check(char *str, t_spec *elem)
 	else
 	{
 		i = ft_strlen(str);
-		str_pre = ft_memset(ft_strnew(size), '0', size);
+		newstr = ft_strnew(size);
+		str_pre = ft_memset(newstr, '0', size);
 		while (size >= 0 && i >= 0)
 			str_pre[size--] = str[i--];
+		free(newstr);
 	}
 	return (str_pre);
 }
