@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 17:52:20 by rrhaenys          #+#    #+#             */
-/*   Updated: 2018/12/27 18:45:26 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/07 16:27:00 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void	print_structure(t_spec *elem)
 		"j", elem->length.j,
 		"z", elem->length.z,
 		"t", elem->length.t);
-	printf("%s=%c(%d)\n", "character", elem->character, elem->character);
+	//printf("%s=%c(%d)\n", "character", elem->character, elem->character);
+	printf("%s=%c\n", "character", elem->character);
 }

@@ -6,7 +6,7 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:07:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 16:43:42 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/12 17:32:55 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	sharp_check(t_spec *elem, char c)
 
 int			ft_output(t_spec *elem, char *str, int size)
 {
-	if (elem->precision > 0 && elem->character != 's')
+	if (elem->precision > 0 && elem->character != 's' && elem->character != 'p' && elem->character != 'o')
 	{
 		size += elem->precision - (int)ft_strlen(str);
 		str = precision_check(str, elem);
@@ -75,7 +75,7 @@ int			ft_output(t_spec *elem, char *str, int size)
 		put_space(&size, ' ');
 	if (elem->flag.sharp == 1)
 		sharp_check(elem, str[0]);
-	if (elem->character == 'd')
+	if (elem->character == 'd' || elem->character == 'i')
 		flag_check(elem);
 	while (size < elem->width && !elem->flag.minus && elem->flag.zerro)
 		put_space(&size, '0');

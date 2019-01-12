@@ -6,12 +6,13 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 15:20:28 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/08 16:44:00 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/12 16:26:43 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
 #include "libft.h"
+#include <stdio.h>
 
 static char	*ft_dtoa(double n)
 {
