@@ -6,13 +6,14 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:08:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/13 15:37:44 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/13 17:23:19 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
 
-static unsigned long long int	allocator(t_spec *elem, unsigned long long int n)
+static unsigned long long int	allocator(t_spec *elem,
+								unsigned long long int n)
 {
 	if (elem->length.l == 1 || elem->character == 'U')
 		return ((unsigned long int)n);
@@ -29,7 +30,7 @@ static unsigned long long int	allocator(t_spec *elem, unsigned long long int n)
 	return ((unsigned int)n);
 }
 
-int		ft_u(t_spec *elem, va_list ap)
+int								ft_u(t_spec *elem, va_list ap)
 {
 	int						size;
 	char					*str;

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:07:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/13 15:49:27 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/13 17:21:43 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,15 @@ static char	*precision_check(char *str, t_spec *elem)
 	int		i;
 	int		size;
 	char	*str_pre;
-	//char	*newstr;
+	char	*newstr;
 
 	size = elem->precision;
 	if (elem->character == 'f')
 	{
 		size += ft_strchr(str, '.') - str + 1;
+		newstr = str_pre;
 		str_pre = ft_memset(ft_strnew(size), '0', size);
+		free(newstr);
 		i = -1;
 		while (++i < size && str[i] != '\0')
 			str_pre[i] = str[i];
@@ -55,9 +57,9 @@ static char	*precision_check(char *str, t_spec *elem)
 	return (str_pre);
 }
 
-static void	sharp_check(t_spec *elem, char c)
+static void	sharp_check(t_spec *elem)
 {
-	if (elem->character == 'p' || (elem->character == 'x' && c != '0'))
+	if (elem->character == 'p' || elem->character == 'x')
 		ft_putstr("0x");
 	else if (elem->character == 'X')
 		ft_putstr("0X");
@@ -67,8 +69,9 @@ static void	sharp_check(t_spec *elem, char c)
 
 int			ft_output(t_spec *elem, char *str, int size)
 {
-	if (elem->precision > 0 && (elem->character == 'f' || 
-		(elem->character == 'd' && elem->precision > (int)ft_strlen(str))))
+	if (elem->precision > 0 && (elem->character == 'f' ||
+		((elem->character == 'd' || elem->character == 'p')
+		&& elem->precision > (int)ft_strlen(str))))
 	{
 		size += elem->precision - (int)ft_strlen(str);
 		str = precision_check(str, elem);
@@ -76,7 +79,7 @@ int			ft_output(t_spec *elem, char *str, int size)
 	while (size < elem->width && !elem->flag.minus && !elem->flag.zerro)
 		put_space(&size, ' ');
 	if (elem->flag.sharp == 1)
-		sharp_check(elem, str[0]);
+		sharp_check(elem);
 	if (elem->character == 'd')
 		flag_check(elem);
 	while (size < elem->width && !elem->flag.minus && elem->flag.zerro)

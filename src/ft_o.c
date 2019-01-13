@@ -6,14 +6,15 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 14:43:52 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/13 16:22:25 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/13 17:23:31 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
 #include <stdio.h>
 
-static unsigned long long int	allocator(t_spec *elem, unsigned long long int n)
+static unsigned long long int	allocator(t_spec *elem,
+								unsigned long long int n)
 {
 	if (elem->length.l == 1 || elem->character == 'O')
 		return ((unsigned long int)n);
@@ -28,11 +29,11 @@ static unsigned long long int	allocator(t_spec *elem, unsigned long long int n)
 	return ((unsigned int)n);
 }
 
-int						ft_o(t_spec *elem, va_list ap)
+int								ft_o(t_spec *elem, va_list ap)
 {
 	unsigned long long int	num;
-	char			*par;
-	int				size;
+	char					*par;
+	int						size;
 
 	num = allocator(elem, va_arg(ap, unsigned long long int));
 	if ((par = ft_rebase(num, 8)) == NULL)

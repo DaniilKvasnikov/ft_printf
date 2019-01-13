@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:09:12 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/13 16:27:37 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/13 17:20:14 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,19 @@ static long long int	allocator(t_spec *elem, unsigned long long int n)
 
 int						ft_x(t_spec *elem, va_list ap)
 {
-	int				size;
-	char			*str;
+	int						size;
+	char					*str;
 	unsigned long long int	n;
 
 	n = allocator(elem, va_arg(ap, unsigned long long int));
 	if (n == 0)
 	{
 		elem->flag.sharp = 0;
-		str = ft_strdup("0");
-		size = ft_output(elem, str, 1);
+		elem->character = 'x';
+		if (elem->precision != -1)
+			size = ft_output(elem, "", 0);
+		else
+			size = ft_output(elem, "0", 1);
 	}
 	else
 	{
@@ -50,7 +53,7 @@ int						ft_x(t_spec *elem, va_list ap)
 			size = ft_output(elem, str, ft_strlen(str) + 2);
 		else
 			size = ft_output(elem, str, ft_strlen(str));
+		free(str);
 	}
-	free(str);
 	return (size);
 }
