@@ -6,13 +6,13 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 11:56:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/09 11:59:14 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/13 14:53:58 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_size(long long n, int base)
+static int	get_size(unsigned long long n, int base)
 {
 	int index;
 
@@ -25,7 +25,7 @@ static int	get_size(long long n, int base)
 	return (index);
 }
 
-char		*ft_rebase(long long n, int base)
+char		*ft_rebase(unsigned long long n, int base)
 {
 	char	*str;
 	char	*res;
