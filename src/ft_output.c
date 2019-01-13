@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:07:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/13 17:21:43 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/13 18:07:33 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,13 @@ static char	*precision_check(char *str, t_spec *elem)
 	int		i;
 	int		size;
 	char	*str_pre;
-	char	*newstr;
+	//char	*newstr;
 
 	size = elem->precision;
 	if (elem->character == 'f')
 	{
 		size += ft_strchr(str, '.') - str + 1;
-		newstr = str_pre;
 		str_pre = ft_memset(ft_strnew(size), '0', size);
-		free(newstr);
 		i = -1;
 		while (++i < size && str[i] != '\0')
 			str_pre[i] = str[i];
@@ -69,9 +67,8 @@ static void	sharp_check(t_spec *elem)
 
 int			ft_output(t_spec *elem, char *str, int size)
 {
-	if (elem->precision > 0 && (elem->character == 'f' ||
-		((elem->character == 'd' || elem->character == 'p')
-		&& elem->precision > (int)ft_strlen(str))))
+	if (elem->precision > 0 && (elem->character == 'f'
+		|| (elem->precision > (int)ft_strlen(str) && elem->character != '%')))
 	{
 		size += elem->precision - (int)ft_strlen(str);
 		str = precision_check(str, elem);
