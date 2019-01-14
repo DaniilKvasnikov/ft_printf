@@ -6,7 +6,7 @@
 /*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:10:10 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 20:17:41 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/14 12:05:04 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ char			*ft_x_minus(char *str);
 char			*ft_precision(char *str, int size);
 char			*ft_itoa_ui(unsigned long long int n);
 char			*ft_itoa_lli(long long int n, t_spec *elem);
+int				ft_invalid_character(t_spec *elem);
 
 #endif

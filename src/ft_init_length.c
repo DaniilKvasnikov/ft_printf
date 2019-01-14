@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 01:19:13 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/14 11:01:58 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/14 12:40:31 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ int				get_length(t_spec *elem, char *str)
 	int	index;
 
 	index = 0;
-	while (is_length(elem, *str++) != 0 && index < 2 && *str != '\0')
+	while (*str != '\0' && index < 2 && is_length(elem, *str++) != 0)
 		index++;
-	//printf("i - %d\n", index);
 	return (index);
 }
