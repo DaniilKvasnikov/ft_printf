@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 22:40:57 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/12 23:26:13 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 16:10:48 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 {
 	int num;
 
-	num = ft_printf("%4.15S", L"我是一只猫。");
+	num = ft_printf("%lc, %lc", L'暖', L'ح');
 	ft_printf("\n%d", num);
 	return (0);
 }
