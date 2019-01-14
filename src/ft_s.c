@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 17:42:11 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 19:53:16 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 16:09:49 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int		ft_s(t_spec *elem, va_list ap)
 	int		size;
 	char	*str;
 
+	if (elem->length == 3)
+		return (ft_sbig(elem, ap));
 	size = 0;
 	str = va_arg(ap, char*);
 	if (str == NULL)
