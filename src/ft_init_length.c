@@ -6,35 +6,44 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 01:19:13 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/10 01:20:06 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 12:40:31 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
-int		is_length(t_spec *elem, char c)
+static int		is_length(t_spec *elem, char c)
 {
-	if (c == 'h')
-		return (elem->length.h = (elem->length.h % 2 + 1));
+	char *str;
+
+	str = "hljzt";
+	//printf("c1 - %c\n", c);
+	if (ft_strchr(str, c) == NULL)
+		return (0);
+	if (c == 'h' && elem->length == 1)
+		elem->length = 2;
+	else if (c == 'h')
+		elem->length = 1;
+	else if (c == 'l' && elem->length == 3)
+		elem->length = 4;
 	else if (c == 'l')
-		return (elem->length.l = (elem->length.l % 2 + 1));
-	else if (c == 'L')
-		return (elem->length.lbig = (elem->length.lbig % 2 + 1));
+		elem->length = 3;
 	else if (c == 'j')
-		return (elem->length.j = (elem->length.j % 2 + 1));
+		elem->length = 5;
 	else if (c == 'z')
-		return (elem->length.z = (elem->length.z % 2 + 1));
-	else if (c == 't')
-		return (elem->length.t = (elem->length.t % 2 + 1));
-	return (0);
+		elem->length = 6;
+	else
+		elem->length = 7;
+	return (1);
 }
 
-char	*get_length(t_spec *elem, char *str)
+int				get_length(t_spec *elem, char *str)
 {
 	int	index;
 
 	index = 0;
-	while (is_length(elem, str[index]) != 0)
+	while (*str != '\0' && index < 2 && is_length(elem, *str++) != 0)
 		index++;
-	return (&(str[index]));
+	return (index);
 }

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:56:04 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/12 19:40:51 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 15:28:47 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void			ft_puts(char *str);
 int				*ft_range(int min, int max);
-char			*ft_rebase(long long n, int base);
+char			*ft_rebase(unsigned long long n, int base);
 void			ft_toupper_str(char *str);
 
 #endif

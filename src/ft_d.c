@@ -6,28 +6,30 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 19:19:02 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/12 20:23:03 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/14 11:02:34 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
+#include <stdio.h>
 
 static char	*allocator(t_spec *elem, long long int n)
 {
-	if (elem->length.l == 1)
+	if (elem->length == 3)
 		return (ft_itoa_lli((long int)n, elem));
-	else if (elem->length.z == 1)
+	else if (elem->length == 6)
 		return (ft_itoa_lli((ssize_t)n, elem));
-	else if (elem->length.j == 1)
+	else if (elem->length == 5)
 		return (ft_itoa_lli((intmax_t)n, elem));
-	else if (elem->length.h == 1)
+	else if (elem->length == 1)
 		return (ft_itoa_lli((short int)n, elem));
-	else if (elem->length.h == 2)
+	else if (elem->length == 2)
 		return (ft_itoa_lli((signed char)n, elem));
-	else if (elem->length.l == 2)
+	else if (elem->length == 4)
 		return (ft_itoa_lli(n, elem));
 	else
 		return (ft_itoa_lli((int)n, elem));
+
 }
 
 int			ft_d(t_spec *elem, va_list ap)

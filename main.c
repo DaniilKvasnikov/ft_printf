@@ -6,17 +6,19 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 22:40:57 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/10 02:32:16 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/12 23:26:13 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "stdio.h"
+#include <limits.h>
 
 int	main(void)
 {
-//	ft_printf("%lld", -9223372036854775808);
-	for (int i = 0; i < (0x80 + 256); i++)
-		ft_putchar_fd(i, 1);
+	int num;
+
+	num = ft_printf("%4.15S", L"我是一只猫。");
+	ft_printf("\n%d", num);
 	return (0);
 }

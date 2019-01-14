@@ -6,11 +6,12 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 14:39:49 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/12 23:24:27 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 15:28:25 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
+#include <stdio.h>
 
 int		ft_p(t_spec *elem, va_list ap)
 {
@@ -25,9 +26,10 @@ int		ft_p(t_spec *elem, va_list ap)
 		p = ft_strnew(0);
 	}
 	elem->flag.sharp = 1;
-	if (elem->precision < (int)ft_strlen(p))
-		elem->precision = -1;
-	size = ft_output(elem, p, ft_strlen(p) + 2);
+	if (elem->precision == 0)
+		size = ft_output(elem, "", 2);
+	else
+		size = ft_output(elem, p, ft_strlen(p) + 2);
 	free(p);
 	return (size);
 }

@@ -6,11 +6,12 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 16:30:43 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/12 22:33:29 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 15:27:13 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int		is_num(char c)
 {
@@ -21,15 +22,9 @@ int		is_num(char c)
 
 int		is_character(t_spec *elem, char c)
 {
-	char *characters;
-
-	characters = "dDioOuUxXcCeEfFgGsSp%";
-	while (*characters != '\0')
-	{
-		if (c == *characters)
-			return (elem->character = c);
-		characters++;
-	}
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '%')
+		return (elem->character = c);
+	elem->character = 0;
 	return (0);
 }
 
@@ -53,7 +48,7 @@ int		ft_init_structure(t_spec *elem, char *str)
 	str = get_flags(elem, str);
 	str = get_width(elem, str);
 	str = get_precision(elem, str);
-	str = get_length(elem, str);
+	str += get_length(elem, str);
 	str = get_character(elem, str);
 	return (str - start);
 }

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 19:35:03 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/12 19:40:59 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/12 23:33:17 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int			ft_output_int(t_spec *elem, int *str, int size)
 		put_space(&size, ' ');
 	while (size < elem->width && !elem->flag.minus && elem->flag.zerro)
 		put_space(&size, '0');
+	size = ft_strlen_int(str);
 	ft_putstr_int(str);
 	while (size < elem->width && elem->flag.minus)
 		put_space(&size, ' ');
