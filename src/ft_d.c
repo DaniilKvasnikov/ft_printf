@@ -6,12 +6,11 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 19:19:02 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/14 17:33:41 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 17:54:37 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
-#include <stdio.h>
 
 static char	*allocator(t_spec *elem, long long int n)
 {

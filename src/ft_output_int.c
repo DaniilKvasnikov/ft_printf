@@ -6,12 +6,11 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 19:35:03 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/14 16:30:20 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 17:54:44 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
-#include <stdio.h>
 
 static void	put_space(int *size, char c)
 {

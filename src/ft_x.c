@@ -6,12 +6,11 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:09:12 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/14 17:29:17 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 17:54:56 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
-#include <stdio.h>
 
 static long long int	allocator(t_spec *elem, unsigned long long int n)
 {

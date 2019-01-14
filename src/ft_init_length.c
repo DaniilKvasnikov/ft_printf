@@ -6,18 +6,17 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 01:19:13 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/14 17:34:05 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 17:58:01 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static int		is_length(t_spec *elem, char c)
 {
 	char *str;
 
-	str = "hljzt";
+	str = "hljzL";
 	if (ft_strchr(str, c) == NULL)
 		return (0);
 	if (c == 'h' && elem->length == 1)

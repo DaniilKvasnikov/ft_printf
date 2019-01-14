@@ -6,12 +6,11 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 16:30:43 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/14 15:27:13 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 17:54:41 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int		is_num(char c)
 {

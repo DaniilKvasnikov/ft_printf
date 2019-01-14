@@ -6,12 +6,11 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 15:20:28 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/14 17:33:50 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 17:53:59 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
-#include <stdio.h>
 
 static double	ft_dop(double n)
 {
@@ -22,7 +21,7 @@ static double	ft_dop(double n)
 	return (n);
 }
 
-static char		*ft_dtoa(double n)
+static char		*ft_dtoa(long double n)
 {
 	char	*str;
 	char	*dop;
@@ -57,7 +56,10 @@ int				ft_f(t_spec *elem, va_list ap)
 
 	if (elem->character == 'F')
 		elem->character = 'f';
-	str = ft_dtoa(va_arg(ap, double));
+	if (elem->length == 8)
+		str = ft_dtoa(va_arg(ap, long double));
+	else
+		str = ft_dtoa(va_arg(ap, double));
 	size = ft_output(elem, str, ft_strlen(str));
 	free(str);
 	return (size);
