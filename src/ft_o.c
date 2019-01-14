@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 14:43:52 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/14 15:27:56 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 17:19:52 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,15 @@ int								ft_o(t_spec *elem, va_list ap)
 	num = allocator(elem, va_arg(ap, unsigned long long int));
 	if ((par = ft_rebase(num, 8)) == NULL)
 		return (-1);
-	if (elem->precision != -1 && num == 0)
-	{
-		if (elem->flag.sharp == 1)
-			size = ft_output(elem, "", 1);
-		else
-			size = ft_output(elem, "", 0);
-	}
-	else if (elem->flag.sharp == 1 && num == 0)
-		size = ft_output(elem, "", 1);
-	else if (elem->flag.sharp == 1)
+	if (elem->flag.sharp && elem->precision > 1)
+		elem->precision--;
+	if (elem->precision != -1 && num == 0 && elem->flag.sharp == 0)
+		return (ft_output(elem, "", 0));
+	if (elem->precision != -1  && elem->flag.sharp == 1)
+		elem->flag.sharp = (num != 0);
+	if (num == 0 && elem->flag.sharp == 1)
+		elem->flag.sharp = 0;
+	if (elem->flag.sharp == 1)
 		size = ft_output(elem, par, ft_strlen(par) + 1);
 	else
 		size = ft_output(elem, par, ft_strlen(par));

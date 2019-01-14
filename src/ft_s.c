@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_s.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/27 17:42:11 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/14 16:09:49 by rrhaenys         ###   ########.fr       */
-/*                                                                            */
+/*																									 */
+/*																		  :::		::::::::	*/
+/*	ft_s.c															:+:		:+:	 :+:	*/
+/*																	 +:+ +:+			+:+	  */
+/*	By: rrhaenys <rrhaenys@student.42.fr>			 +#+  +:+		 +#+		  */
+/*																+#+#+#+#+#+	+#+			  */
+/*	Created: 2018/12/27 17:42:11 by rgyles				#+#	 #+#				 */
+/*	Updated: 2019/01/14 16:49:15 by rrhaenys			###	########.fr		 */
+/*																									 */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
@@ -50,20 +50,20 @@ int		ft_s(t_spec *elem, va_list ap)
 	str = va_arg(ap, char*);
 	if (str == NULL)
 	{
-		ft_putstr("(null)");
-		return (6);
+		if (elem->flag.zerro == 0)
+		{
+			ft_putstr("(null)");
+			return (6);
+		}
+		else
+			str = "";
 	}
-	if (elem->precision != -1)
+	if (elem->precision != -1 && elem->precision < (int)ft_strlen(str))
 	{
 		str = ft_strsub(str, 0, elem->precision);
-		size = ft_strlen(str);
-		size = ft_output(elem, str, size);
+		size = ft_output(elem, str, ft_strlen(str));
 		free(str);
+		return (size);
 	}
-	else
-	{
-		size = ft_strlen(str);
-		size = ft_output(elem, str, size);
-	}
-	return (size);
+	return (ft_output(elem, str, ft_strlen(str)));
 }
