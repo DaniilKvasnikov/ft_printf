@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:09:12 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/13 17:20:14 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/14 10:47:50 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,21 @@
 
 static long long int	allocator(t_spec *elem, unsigned long long int n)
 {
-	if (elem->length.l == 1)
+	if (elem->length == 3)
 		return ((unsigned long int)n);
-	else if (elem->length.j == 1)
+	else if (elem->length == 6)
+		return ((size_t)n);
+	else if (elem->length == 5)
 		return ((uintmax_t)n);
-	else if (elem->length.l == 2)
-		return (n);
-	else if (elem->length.h == 1)
-		return ((unsigned int)n);
-	else if (elem->length.h == 2)
+	else if (elem->length == 1)
+		return ((unsigned short int)n);
+	else if (elem->length == 2)
 		return ((unsigned char)n);
+	else if (elem->length == 4)
+		return (n);
 	else
 		return ((unsigned int)n);
+
 }
 
 int						ft_x(t_spec *elem, va_list ap)
