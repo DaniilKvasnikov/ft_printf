@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_invalid_character.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgyles <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 11:52:39 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/14 12:17:08 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/14 17:36:43 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_invalid_character(t_spec *elem)
 {
-	int size;
+	int		size;
 	char	*str;
 
 	if (elem->character == 0)

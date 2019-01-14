@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 01:19:13 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/14 12:40:31 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/14 17:34:05 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static int		is_length(t_spec *elem, char c)
 	char *str;
 
 	str = "hljzt";
-	//printf("c1 - %c\n", c);
 	if (ft_strchr(str, c) == NULL)
 		return (0);
 	if (c == 'h' && elem->length == 1)

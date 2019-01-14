@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 14:43:52 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/14 17:19:52 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 17:31:11 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static unsigned long long int	allocator(t_spec *elem,
 		return (n);
 	else
 		return ((unsigned int)n);
-
 }
 
 int								ft_o(t_spec *elem, va_list ap)
@@ -46,7 +45,7 @@ int								ft_o(t_spec *elem, va_list ap)
 		elem->precision--;
 	if (elem->precision != -1 && num == 0 && elem->flag.sharp == 0)
 		return (ft_output(elem, "", 0));
-	if (elem->precision != -1  && elem->flag.sharp == 1)
+	if (elem->precision != -1 && elem->flag.sharp == 1)
 		elem->flag.sharp = (num != 0);
 	if (num == 0 && elem->flag.sharp == 1)
 		elem->flag.sharp = 0;

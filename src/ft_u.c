@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:08:48 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/14 10:47:22 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/14 17:29:30 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static unsigned long long int	allocator(t_spec *elem,
 		return (n);
 	else
 		return ((unsigned int)n);
-
 }
 
 int								ft_u(t_spec *elem, va_list ap)

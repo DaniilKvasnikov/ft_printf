@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 19:19:02 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/14 11:02:34 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/14 17:33:41 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static char	*allocator(t_spec *elem, long long int n)
 		return (ft_itoa_lli(n, elem));
 	else
 		return (ft_itoa_lli((int)n, elem));
-
 }
 
 int			ft_d(t_spec *elem, va_list ap)

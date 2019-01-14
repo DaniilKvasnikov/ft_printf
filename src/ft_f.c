@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 15:20:28 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/14 15:26:46 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 17:33:50 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static double	ft_dop(double n)
 
 	c = n;
 	n -= c;
-	return n;
+	return (n);
 }
 
 static char		*ft_dtoa(double n)
