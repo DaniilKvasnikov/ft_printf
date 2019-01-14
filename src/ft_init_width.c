@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 01:17:24 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/10 01:17:48 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 16:37:48 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ char	*get_width(t_spec *elem, char *str)
 
 	index = 0;
 	sum = 0;
+	if (*str == '*')
+	{
+		elem->width = -2;
+		return ((str + 1));
+	}
 	while ((num = is_num(str[index])) >= 0)
 	{
 		sum = sum * 10 + num;

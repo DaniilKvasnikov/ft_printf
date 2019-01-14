@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 01:18:14 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/10 01:38:21 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 16:37:32 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ char	*get_precision(t_spec *elem, char *str)
 	{
 		elem->precision = -1;
 		return (&(str[0]));
+	}
+	if (str[index] == '*')
+	{
+		elem->precision = -2;
+		return ((str + 2));
 	}
 	while ((num = is_num(str[index])) >= 0)
 	{
