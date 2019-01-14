@@ -6,12 +6,12 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 15:20:28 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/10 00:40:10 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/01/14 11:41:31 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rgyles.h"
-#include "libft.h"
+#include <stdio.h>
 
 static char	*ft_dtoa(double n)
 {
@@ -47,6 +47,8 @@ int			ft_f(t_spec *elem, va_list ap)
 	char	*str;
 	int		size;
 
+	if (elem->character == 'F')
+		elem->character = 'f';
 	str = ft_dtoa(va_arg(ap, double));
 	size = ft_output(elem, str, ft_strlen(str));
 	free(str);

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 14:43:52 by rgyles            #+#    #+#             */
-/*   Updated: 2019/01/14 10:22:08 by rgyles           ###   ########.fr       */
+/*   Updated: 2019/01/14 11:43:47 by rgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static unsigned long long int	allocator(t_spec *elem,
 	else if (elem->length == 4)
 		return (n);
 	else
-		return ((int)n);
+		return ((unsigned int)n);
 
 }
 
